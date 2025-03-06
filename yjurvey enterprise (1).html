@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#services -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YJURVEY Enterprise - Innovative solutions and services for modern living">
+    <title>YJURVEY Enterprise | Innovative Solutions</title>
+    <link rel="stylesheet" href="./yjurvey enterprise (1)_files/all.min.css">
+    <link rel="stylesheet" href="./yjurvey enterprise (1)_files/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #1e3c72;
+            --secondary-color: #2a5298;
+            --accent-color: #ff6f61;
+            --light-color: #ffffff;
+            --dark-color: #121212;
+            --text-color: #f8f9fa;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-hover: rgba(255, 255, 255, 0.2);
+            --nav-bg: rgba(0, 0, 0, 0.85);
+            --footer-bg: rgba(0, 0, 0, 0.9);
+            --transition-speed: 0.3s;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --border-radius: 12px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+            transition: all var(--transition-speed);
+        }
+
+        body.rtl {
+            direction: rtl;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="none"/><path d="M0 50 Q25 0 50 50 Q75 100 100 50" stroke="rgba(255,255,255,0.03)" fill="none" stroke-width="1" /></svg>');
+            background-size: 300px 300px;
+            opacity: 0.6;
+        }
+
+        .language-selection {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .language-selection.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .language-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .language-container h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .language-btn {
+            padding: 15px 30px;
+            background: var(--accent-color);
+            color: var(--light-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .language-btn:hover {
+            background: #e8635c;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 111, 97, 0.4);
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all var(--transition-speed);
+        }
+
+        .header-scrolled {
+            background: var(--nav-bg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) var(--spacing-xl);
+            transition: all var(--transition-speed);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--light-color);
+        }
+
+        .logo i {
+            margin-right: var(--spacing-sm);
+        }
+
+        body.rtl .logo i {
+            margin-right: 0;
+            margin-left: var(--spacing-sm);
+        }
+
+        .logo i {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            padding: var(--spacing-sm);
+            transition: all var(--transition-speed);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width var(--transition-speed);
+        }
+
+        body.rtl nav a::after {
+            left: auto;
+            right: 0;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .language-toggle {
+            background: none;
+            border: none;
+            color: var(--light-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .language-toggle:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            padding-top: 120px;
+            padding-bottom: var(--spacing-xl);
+            text-align: center;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-md);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            height: 8px;
+            width: 100%;
+            background-color: rgba(255, 111, 97, 0.3);
+            bottom: 5px;
+            left: 0;
+            z-index: -1;
+        }
+
+        body.rtl .hero h1 span::after {
+            left: auto;
+            right: 0;
+        }
+
+        #announcement {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xl);
+            min-height: 2em;
+        }
+
+        .announcement-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            box-shadow: var(--box-shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.6s;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: var(--spacing-lg);
+            padding: 15px 40px;
+            background: var(--accent-color);
+            color: var(--light-color);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(255, 111, 97, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.9s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 111, 97, 0.5);
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            font-size: 2rem;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 30%;
+            right: 15%;
+            font-size: 3rem;
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            font-size: 2.5rem;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(4) {
+            bottom: 30%;
+            right: 10%;
+            font-size: 2rem;
+            animation-delay: 3s;
+        }
+
+        body.rtl .floating-icon:nth-child(1) { left: auto; right: 10%; }
+        body.rtl .floating-icon:nth-child(2) { right: auto; left: 15%; }
+        body.rtl .floating-icon:nth-child(3) { left: auto; right: 15%; }
+        body.rtl .floating-icon:nth-child(4) { right: auto; left: 10%; }
+
+        .services {
+            padding: var(--spacing-xl) var(--spacing-lg);
+            position: relative;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: all var(--transition-speed);
+            text-decoration: none;
+            color: var(--light-color);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            box-shadow: var(--box-shadow);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 111, 97, 0.2), transparent);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity var(--transition-speed);
+        }
+
+        body.rtl .service-card::before {
+            left: auto;
+            right: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--accent-color);
+        }
+
+        .service-card h3 {
+            margin: 0 0 var(--spacing-md);
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.8;
+            flex-grow: 1;
+        }
+
+        .service-cta {
+            margin-top: var(--spacing-md);
+            display: inline-block;
+            padding: var(--spacing-sm) 0;
+            color: var(--accent-color);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .service-cta::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width var(--transition-speed);
+        }
+
+        body.rtl .service-cta::after {
+            left: auto;
+            right: 0;
+        }
+
+        .service-card:hover .service-cta::after {
+            width: 100%;
+        }
+
+        .testimonials {
+            padding: var(--spacing-xl) var(--spacing-lg);
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 0 auto;
+            position: relative;
+            box-shadow: var(--box-shadow);
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .testimonial-quote {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: var(--spacing-md);
+        }
+
+        body.rtl .testimonial-author {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .testimonial-avatar {
+            margin-right: 0;
+            margin-left: var(--spacing-md);
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info p {
+            margin: 5px 0 0;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--spacing-lg);
+            gap: var(--spacing-sm);
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .testimonial-dot.active {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        .contact {
+            padding: var(--spacing-xl) var(--spacing-lg);
+            text-align: center;
+            position: relative;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: var(--spacing-lg);
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            text-align: left;
+            backdrop-filter: blur(5px);
+        }
+
+        body.rtl .contact-info {
+            text-align: right;
+        }
+
+        .contact-info h3 {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.8rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        body.rtl .contact-method {
+            flex-direction: row-reverse;
+        }
+
+        .contact-method i {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: var(--spacing-md);
+            font-size: 1.2rem;
+        }
+
+        body.rtl .contact-method i {
+            margin-right: 0;
+            margin-left: var(--spacing-md);
+        }
+
+        .contact-method div p {
+            margin: 0;
+        }
+
+        .contact-method div p:first-child {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        body.rtl .social-links {
+            justify-content: flex-end;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--light-color);
+            text-decoration: none;
+            transition: all var(--transition-speed);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: var(--spacing-lg);
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-form h3 {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.8rem;
+            text-align: left;
+        }
+
+        body.rtl .contact-form h3 {
+            text-align: right;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+            text-align: left;
+        }
+
+        body.rtl .form-group {
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: var(--light-color);
+            font-family: inherit;
+            transition: all var(--transition-speed);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--accent-color);
+            color: var(--light-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #e8635c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
+        }
+
+        footer {
+            background: var(--footer-bg);
+            padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: var(--spacing-xl);
+            max-width: 1200px;
+            margin: 0 auto var(--spacing-xl);
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo h2 {
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--light-color);
+        }
+
+        .footer-logo p {
+            opacity: 0.7;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--light-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all var(--transition-speed);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        body.rtl .footer-links a:hover {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+
+        .footer-newsletter {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-newsletter h3 {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--light-color);
+        }
+
+        .footer-newsletter p {
+            opacity: 0.7;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+            border-radius: 5px 0 0 5px;
+        }
+
+        body.rtl .newsletter-input {
+            border-radius: 0 5px 5px 0;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .newsletter-btn {
+            background: var(--accent-color);
+            color: var(--light-color);
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        body.rtl .newsletter-btn {
+            border-radius: 5px 0 0 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1100;
+            opacity: 0;
+            transition: opacity var(--transition-speed);
+        }
+
+        .modal.show {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            color: var(--light-color);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .modal-content p {
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--light-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity var(--transition-speed);
+        }
+
+        body.rtl .modal-close {
+            right: auto;
+            left: 15px;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-button {
+            padding: 12px 25px;
+            background: var(--accent-color);
+            color: var(--light-color);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            box-shadow: 0 5px 15px rgba(255, 111, 97, 0.3);
+        }
+
+        .modal-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 111, 97, 0.5);
+        }
+
+        .modal-button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            color: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--transition-speed);
+            z-index: 99;
+        }
+
+        body.rtl .back-to-top {
+            right: auto;
+            left: 30px;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: #e8635c;
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: var(--spacing-md); }
+            .nav-toggle { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--nav-bg);
+                flex-direction: column;
+                align-items: center;
+                padding: var(--spacing-md) 0;
+                gap: var(--spacing-md);
+                display: none;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+            body.rtl .nav-links {
+                left: auto;
+                right: 0;
+            }
+            .nav-links.active { display: flex; }
+            .hero h1 { font-size: 2.5rem; }
+            #announcement { font-size: 1.2rem; }
+            .section-title { font-size: 2rem; }
+            .testimonial-quote { font-size: 1.2rem; }
+            .contact-container { flex-direction: column; }
+            .footer-content { flex-direction: column; gap: var(--spacing-lg); }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .cta-button { padding: 12px 30px; font-size: 1rem; }
+            .section-title { font-size: 1.8rem; }
+            .testimonial-quote { font-size: 1rem; }
+            .back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+            body.rtl .back-to-top { right: auto; left: 20px; }
+        }
+    </style>
+</head>
+<body class="">
+    <div class="language-selection" id="languageSelection" style="display: none;">
+        <div class="language-container">
+            <h1 data-en="Welcome to YJURVEY Enterprise" data-he="ברוכים הבאים למפעל YJURVEY">Welcome to YJURVEY Enterprise</h1>
+            <div class="language-buttons">
+                <button class="language-btn" onclick="setLanguage(&#39;en&#39;)">English</button>
+                <button class="language-btn" onclick="setLanguage(&#39;he&#39;)">עברית</button>
+            </div>
+        </div>
+    </div>
+
+    <header id="header" class="">
+        <nav>
+            <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#home" class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>YJURVEY</span>
+            </a>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#home" data-en="Home" data-he="בית">Home</a>
+                <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#services" data-en="Services" data-he="שירותים">Services</a>
+                <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#testimonials" data-en="Testimonials" data-he="המלצות">Testimonials</a>
+                <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#contact" data-en="Contact" data-he="צור קשר">Contact</a>
+                <button class="language-toggle" id="languageToggle" title="Change Language">
+                    <i class="fas fa-globe"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <i class="fas fa-lightbulb floating-icon"></i>
+        <i class="fas fa-code floating-icon"></i>
+        <i class="fas fa-chart-line floating-icon"></i>
+        <i class="fas fa-shopping-cart floating-icon"></i>
+        <h1 data-en="Welcome to &lt;span&gt;YJURVEY&lt;/span&gt; Enterprise" data-he="ברוכים הבאים ל-&lt;span&gt;YJURVEY&lt;/span&gt; מפעל">Welcome to <span>YJURVEY</span> Enterprise</h1>
+        <div class="announcement-container">
+            <p id="announcement" data-en="I am glad to announce the formation of the YJURVEY Enterprise!" data-he="שמח להכריז על הקמת מפעל YJURVEY!">I am glad to announce the formation of the YJURVEY Enterprise!</p>
+            <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#services" class="cta-button" data-en="Explore Our Services" data-he="גלה את השירותים שלנו">Explore Our Services</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title" data-en="Our Services" data-he="השירותים שלנו">Our Services</h2>
+        <div class="services-grid">
+            <a href="https://jurvry.github.io/Your-kitchen/%D7%91%D7%99%D7%AA%20%D7%94%D7%9E%D7%98%D7%91%D7%97%20%D7%A9%D7%9C%D7%9A.html" class="service-card" target="_blank">
+                <i class="fas fa-utensils service-icon"></i>
+                <h3 data-en="Your Kitchen" data-he="המטבח שלך">Your Kitchen</h3>
+                <p data-en="Discover tools and inspiration for your home kitchen (Hebrew)." data-he="גלה כלים והשראה למטבח הביתי שלך (עברית).">Discover tools and inspiration for your home kitchen (Hebrew).</p>
+                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף">Learn More</span>
+            </a>
+            <a href="https://jurvry.github.io/Getaway-Good/Getaway%20Good.html" class="service-card" target="_blank">
+                <i class="fas fa-suitcase service-icon"></i>
+                <h3 data-en="Getaway Good" data-he="חופשה טובה">Getaway Good</h3>
+                <p data-en="Personalized vacation add-ons from $20, delivered via WhatsApp." data-he="תוספות מותאמות אישית לחופשה החל מ-20 דולר, נשלחות דרך וואטסאפ.">Personalized vacation add-ons from $20, delivered via WhatsApp.</p>
+                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף">Learn More</span>
+            </a>
+            <a href="https://jurvry.github.io/GetawayGoods---Custom-Vacation-Packages/GetawayGoods%20-%20Custom%20Vacation%20Packages.html" class="service-card" target="_blank">
+                <i class="fas fa-plane-departure service-icon"></i>
+                <h3 data-en="GetawayGoods" data-he="חבילות חופשה">GetawayGoods</h3>
+                <p data-en="Custom vacation packages for your next adventure." data-he="חבילות חופשה מותאמות להרפתקה הבאה שלך.">Custom vacation packages for your next adventure.</p>
+                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף">Learn More</span>
+            </a>
+            <a href="https://jurvry.github.io/WhatsApp-Status-Assistant/WhatsApp%20Status%20Assistant.html" class="service-card" target="_blank">
+                <i class="fab fa-whatsapp service-icon"></i>
+                <h3 data-en="WhatsApp Status Assistant" data-he="עוזר סטטוס וואטסאפ">WhatsApp Status Assistant</h3>
+                <p data-en="Create standout WhatsApp statuses with ease." data-he="צור סטטוסים בולטים בוואטסאפ בקלות.">Create standout WhatsApp statuses with ease.</p>
+                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף">Learn More</span>
+            </a>
+            <a href="https://jurvry.github.io/dreamcraft/Innovation.html" class="service-card" target="_blank">
+                <i class="fas fa-lightbulb service-icon"></i>
+                <h3 data-en="Innovation" data-he="חדשנות">Innovation</h3>
+                <p data-en="Unleash creativity with innovative solutions." data-he="שחרר יצירתיות עם פתרונות חדשניים.">Unleash creativity with innovative solutions.</p>
+                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף">Learn More</span>
+            </a>
+            <a href="https://jurvry.github.io/Stock-Learning-Hub/Stock%20Learning%20Hub.html" class="service-card" target="_blank">
+                <i class="fas fa-chart-bar service-icon"></i>
+                <h3 data-en="Stock Learning Hub" data-he="מרכז לימודי מניות">Stock Learning Hub</h3>
+                <p data-en="Master the stock market with our learning hub." data-he="שלוט בשוק המניות עם מרכז הלימוד שלנו.">Master the stock market with our learning hub.</p>
+                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף">Learn More</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title" data-en="What People Say" data-he="מה אנשים אומרים">What People Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial active">
+                <p class="testimonial-quote" data-en="&quot;YJURVEY transformed my vacation planning with Getaway Good!&quot;" data-he="&quot;YJURVEY שינה את תכנון החופשה שלי עם חופשה טובה!&quot;">"YJURVEY transformed my vacation planning with Getaway Good!"</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">
+                        <img src="https://via.placeholder.com/60" alt="User Avatar">
+                    </div>
+                    <div class="testimonial-info">
+                        <h4 data-en="Sarah M." data-he="שרה מ.">Sarah M.</h4>
+                        <p data-en="Travel Enthusiast" data-he="חובבת טיולים">Travel Enthusiast</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote" data-en="&quot;The WhatsApp Status Assistant is a game-changer for my social media.&quot;" data-he="&quot;עוזר הסטטוס של וואטסאפ הוא משנה משחק עבור המדיה החברתית שלי.&quot;">"The WhatsApp Status Assistant is a game-changer for my social media."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">
+                        <img src="https://via.placeholder.com/60" alt="User Avatar">
+                    </div>
+                    <div class="testimonial-info">
+                        <h4 data-en="John D." data-he="ג&#39;ון ד.">John D.</h4>
+                        <p data-en="Content Creator" data-he="יוצר תוכן">Content Creator</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-quote" data-en="&quot;Innovation from YJURVEY sparked my next big idea.&quot;" data-he="&quot;חדשנות מ-YJURVEY הציתה את הרעיון הגדול הבא שלי.&quot;">"Innovation from YJURVEY sparked my next big idea."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">
+                        <img src="https://via.placeholder.com/60" alt="User Avatar">
+                    </div>
+                    <div class="testimonial-info">
+                        <h4 data-en="Emily R." data-he="אמילי ר.">Emily R.</h4>
+                        <p data-en="Entrepreneur" data-he="יזמית">Entrepreneur</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <span class="testimonial-dot active" data-index="0"></span>
+                <span class="testimonial-dot" data-index="1"></span>
+                <span class="testimonial-dot" data-index="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title" data-en="Get in Touch" data-he="צור קשר">Get in Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 data-en="Contact Us" data-he="צור איתנו קשר">Contact Us</h3>
+                <div class="contact-method">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <p data-en="Phone" data-he="טלפון">Phone</p>
+                        <p>0552436543</p>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <p data-en="Email" data-he="אימייל">Email</p>
+                        <p>yjurvey61@gmail.com</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3 data-en="Send a Message" data-he="שלח הודעה">Send a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" data-en="Name" data-he="שם">Name</label>
+                        <input type="text" id="name" class="form-control" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-en="Email" data-he="אימייל">Email</label>
+                        <input type="email" id="email" class="form-control" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-en="Message" data-he="הודעה">Message</label>
+                        <textarea id="message" class="form-control" required=""></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" data-en="Send Message" data-he="שלח הודעה">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>YJURVEY Enterprise</h2>
+                <p data-en="Innovative solutions for modern living. Join us in shaping the future." data-he="פתרונות חדשניים לחיים מודרניים. הצטרף אלינו לעיצוב העתיד.">Innovative solutions for modern living. Join us in shaping the future.</p>
+                <div class="social-links">
+                    <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3 data-en="Quick Links" data-he="קישורים מהירים">Quick Links</h3>
+                <ul>
+                    <li><a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#home" data-en="Home" data-he="בית">Home</a></li>
+                    <li><a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#services" data-en="Services" data-he="שירותים">Services</a></li>
+                    <li><a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#testimonials" data-en="Testimonials" data-he="המלצות">Testimonials</a></li>
+                    <li><a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#contact" data-en="Contact" data-he="צור קשר">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h3 data-en="Newsletter" data-he="ניוזלטר">Newsletter</h3>
+                <p data-en="Stay updated with our latest innovations." data-he="הישאר מעודכן עם החידושים האחרונים שלנו.">Stay updated with our latest innovations.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" data-en-placeholder="Your Email" data-he-placeholder="האימייל שלך" required="">
+                    <button type="submit" class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright" data-en="© 2025 YJURVEY Enterprise. All Rights Reserved." data-he="© 2025 מפעל YJURVEY. כל הזכויות שמורות.">© 2025 YJURVEY Enterprise. All Rights Reserved.</div>
+    </footer>
+
+    <div class="modal" id="welcomeModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <h2 data-en="Welcome to YJURVEY!" data-he="ברוכים הבאים ל-YJURVEY!">Welcome to YJURVEY!</h2>
+            <p data-en="We’re thrilled to announce the formation of YJURVEY Enterprise. Explore our innovative services and join us on this journey!" data-he="אנו שמחים להכריז על הקמת מפעל YJURVEY. גלה את השירותים החדשניים שלנו והצטרף אלינו למסע הזה!">We’re thrilled to announce the formation of YJURVEY Enterprise. Explore our innovative services and join us on this journey!</p>
+            <div class="modal-buttons">
+                <button class="modal-button" onclick="window.location.href=&#39;#services&#39;" data-en="Explore Now" data-he="גלה עכשיו">Explore Now</button>
+                <button class="modal-button secondary" id="modalCloseSecondary" data-en="Close" data-he="סגור">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <a href="file:///C:/Users/agent34/Downloads/index%20-%202025-03-03T095914.432.html#home" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        const translations = {
+            en: {
+                welcome: "Welcome to YJURVEY Enterprise",
+                home: "Home",
+                services: "Services",
+                testimonials: "Testimonials",
+                contact: "Contact",
+                heroTitle: "Welcome to <span>YJURVEY</span> Enterprise",
+                announcement: "I am glad to announce the formation of the YJURVEY Enterprise!",
+                ctaButton: "Explore Our Services",
+                servicesTitle: "Our Services",
+                yourKitchen: "Your Kitchen",
+                yourKitchenDesc: "Discover tools and inspiration for your home kitchen (Hebrew).",
+                getawayGood: "Getaway Good",
+                getawayGoodDesc: "Personalized vacation add-ons from $20, delivered via WhatsApp.",
+                getawayGoods: "GetawayGoods",
+                getawayGoodsDesc: "Custom vacation packages for your next adventure.",
+                whatsappAssistant: "WhatsApp Status Assistant",
+                whatsappAssistantDesc: "Create standout WhatsApp statuses with ease.",
+                innovation: "Innovation",
+                innovationDesc: "Unleash creativity with innovative solutions.",
+                stockHub: "Stock Learning Hub",
+                stockHubDesc: "Master the stock market with our learning hub.",
+                learnMore: "Learn More",
+                testimonialsTitle: "What People Say",
+                testimonial1: '"YJURVEY transformed my vacation planning with Getaway Good!"',
+                testimonial1Name: "Sarah M.",
+                testimonial1Role: "Travel Enthusiast",
+                testimonial2: '"The WhatsApp Status Assistant is a game-changer for my social media."',
+                testimonial2Name: "John D.",
+                testimonial2Role: "Content Creator",
+                testimonial3: '"Innovation from YJURVEY sparked my next big idea."',
+                testimonial3Name: "Emily R.",
+                testimonial3Role: "Entrepreneur",
+                contactTitle: "Get in Touch",
+                contactUs: "Contact Us",
+                phone: "Phone",
+                email: "Email",
+                sendMessage: "Send a Message",
+                name: "Name",
+                emailField: "Email",
+                message: "Message",
+                submitButton: "Send Message",
+                footerDesc: "Innovative solutions for modern living. Join us in shaping the future.",
+                quickLinks: "Quick Links",
+                newsletter: "Newsletter",
+                newsletterDesc: "Stay updated with our latest innovations.",
+                newsletterPlaceholder: "Your Email",
+                copyright: "© 2025 YJURVEY Enterprise. All Rights Reserved.",
+                modalTitle: "Welcome to YJURVEY!",
+                modalText: "We’re thrilled to announce the formation of YJURVEY Enterprise. Explore our innovative services and join us on this journey!",
+                modalExplore: "Explore Now",
+                modalClose: "Close"
+            },
+            he: {
+                welcome: "ברוכים הבאים למפעל YJURVEY",
+                home: "בית",
+                services: "שירותים",
+                testimonials: "המלצות",
+                contact: "צור קשר",
+                heroTitle: "ברוכים הבאים ל-<span>YJURVEY</span> מפעל",
+                announcement: "שמח להכריז על הקמת מפעל YJURVEY!",
+                ctaButton: "גלה את השירותים שלנו",
+                servicesTitle: "השירותים שלנו",
+                yourKitchen: "המטבח שלך",
+                yourKitchenDesc: "גלה כלים והשראה למטבח הביתי שלך (עברית).",
+                getawayGood: "חופשה טובה",
+                getawayGoodDesc: "תוספות מותאמות אישית לחופשה החל מ-20 דולר, נשלחות דרך וואטסאפ.",
+                getawayGoods: "חבילות חופשה",
+                getawayGoodsDesc: "חבילות חופשה מותאמות להרפתקה הבאה שלך.",
+                whatsappAssistant: "עוזר סטטוס וואטסאפ",
+                whatsappAssistantDesc: "צור סטטוסים בולטים בוואטסאפ בקלות.",
+                innovation: "חדשנות",
+                innovationDesc: "שחרר יצירתיות עם פתרונות חדשניים.",
+                stockHub: "מרכז לימודי מניות",
+                stockHubDesc: "שלוט בשוק המניות עם מרכז הלימוד שלנו.",
+                learnMore: "למידע נוסף",
+                testimonialsTitle: "מה אנשים אומרים",
+                testimonial1: '"YJURVEY שינה את תכנון החופשה שלי עם חופשה טובה!"',
+                testimonial1Name: "שרה מ.",
+                testimonial1Role: "חובבת טיולים",
+                testimonial2: '"עוזר הסטטוס של וואטסאפ הוא משנה משחק עבור המדיה החברתית שלי."',
+                testimonial2Name: "ג'ון ד.",
+                testimonial2Role: "יוצר תוכן",
+                testimonial3: '"חדשנות מ-YJURVEY הציתה את הרעיון הגדול הבא שלי."',
+                testimonial3Name: "אמילי ר.",
+                testimonial3Role: "יזמית",
+                contactTitle: "צור קשר",
+                contactUs: "צור איתנו קשר",
+                phone: "טלפון",
+                email: "אימייל",
+                sendMessage: "שלח הודעה",
+                name: "שם",
+                emailField: "אימייל",
+                message: "הודעה",
+                submitButton: "שלח הודעה",
+                footerDesc: "פתרונות חדשניים לחיים מודרניים. הצטרף אלינו לעיצוב העתיד.",
+                quickLinks: "קישורים מהירים",
+                newsletter: "ניוזלטר",
+                newsletterDesc: "הישאר מעודכן עם החידושים האחרונים שלנו.",
+                newsletterPlaceholder: "האימייל שלך",
+                copyright: "© 2025 מפעל YJURVEY. כל הזכויות שמורות.",
+                modalTitle: "ברוכים הבאים ל-YJURVEY!",
+                modalText: "אנו שמחים להכריז על הקמת מפעל YJURVEY. גלה את השירותים החדשניים שלנו והצטרף אלינו למסע הזה!",
+                modalExplore: "גלה עכשיו",
+                modalClose: "סגור"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.body.classList.toggle('rtl', lang === 'he');
+            document.documentElement.lang = lang;
+            const elements = document.querySelectorAll('[data-en], [data-he]');
+            elements.forEach(el => {
+                const key = el.tagName === 'INPUT' ? el.getAttribute('data-' + lang + '-placeholder') : el.getAttribute('data-' + lang);
+                if (el.tagName === 'INPUT') {
+                    el.placeholder = key;
+                } else {
+                    el.innerHTML = key;
+                }
+            });
+            document.getElementById('languageSelection').classList.remove('show');
+            setTimeout(() => document.getElementById('languageSelection').style.display = 'none', 300);
+            localStorage.setItem('language', lang);
+            typeWriter(lang);
+        }
+
+        function showLanguageSelection() {
+            const langSelection = document.getElementById('languageSelection');
+            langSelection.style.display = 'flex';
+            setTimeout(() => langSelection.classList.add('show'), 10);
+        }
+
+        function typeWriter(lang) {
+            const text = translations[lang].announcement;
+            let index = 0;
+            const announcement = document.getElementById("announcement");
+            announcement.textContent = '';
+            function type() {
+                if (index < text.length) {
+                    announcement.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, 100);
+                }
+            }
+            type();
+        }
+
+        const navToggle = document.getElementById("navToggle");
+        const navLinks = document.getElementById("navLinks");
+        navToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
+
+        const languageToggle = document.getElementById("languageToggle");
+        languageToggle.addEventListener("click", showLanguageSelection);
+
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", () => {
+            header.classList.toggle("header-scrolled", window.scrollY > 50);
+        });
+
+        const modal = document.getElementById("welcomeModal");
+        const modalClose = document.getElementById("modalClose");
+        const modalCloseSecondary = document.getElementById("modalCloseSecondary");
+
+        function showModal() {
+            modal.style.display = "flex";
+            setTimeout(() => modal.classList.add("show"), 10);
+        }
+
+        function closeModal() {
+            modal.classList.remove("show");
+            setTimeout(() => modal.style.display = "none", 500);
+        }
+
+        modalClose.addEventListener("click", closeModal);
+        modalCloseSecondary.addEventListener("click", closeModal);
+
+        const backToTop = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            backToTop.classList.toggle("visible", window.scrollY > 300);
+        });
+
+        const testimonials = document.querySelectorAll(".testimonial");
+        const dots = document.querySelectorAll(".testimonial-dot");
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach((t, i) => {
+                t.classList.remove("active");
+                dots[i].classList.remove("active");
+            });
+            testimonials[index].classList.add("active");
+            dots[index].classList.add("active");
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener("click", () => {
+                currentTestimonial = i;
+                showTestimonial(currentTestimonial);
+            });
+        });
+
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        const contactForm = document.getElementById("contactForm");
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert(document.documentElement.lang === 'he' ? "ההודעה נשלחה! (זו הדגמה בלבד)" : "Message sent! (This is a demo - no real submission occurs.)");
+            contactForm.reset();
+        });
+
+        window.addEventListener("load", () => {
+            const savedLang = localStorage.getItem('language');
+            if (savedLang) {
+                setLanguage(savedLang);
+                setTimeout(showModal, 2000);
+            } else {
+                showLanguageSelection();
+            }
+        });
+    </script>
+
+</body></html>
