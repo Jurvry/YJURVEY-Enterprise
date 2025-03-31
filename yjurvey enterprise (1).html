@@ -1,1520 +1,1253 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YJURVEY Enterprise - Innovative solutions and services for modern living">
-    <title>YJURVEY Enterprise | Innovative Solutions</title>
+    <title>יזמות חכמה | התוכנית האולטימטיבית ליזמים</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
-            --primary-color: #1e3c72;
-            --secondary-color: #2a5298;
-            --accent-color: #ff6f61;
-            --light-color: #ffffff;
-            --dark-color: #121212;
-            --text-color: #f8f9fa;
-            --card-bg: rgba(255, 255, 255, 0.1);
-            --card-hover: rgba(255, 255, 255, 0.2);
-            --nav-bg: rgba(0, 0, 0, 0.85);
-            --footer-bg: rgba(0, 0, 0, 0.9);
-            --transition-speed: 0.3s;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            --border-radius: 12px;
-            --spacing-sm: 8px;
-            --spacing-md: 16px;
-            --spacing-lg: 24px;
-            --spacing-xl: 40px;
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --danger: #f72585;
+            --success: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
         }
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
 
-    body {
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: var(--text-color);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        overflow-x: hidden;
-        position: relative;
-        transition: all var(--transition-speed);
-    }
-
-    body.rtl {
-        direction: rtl;
-    }
-
-    body::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="none"/><path d="M0 50 Q25 0 50 50 Q75 100 100 50" stroke="rgba(255,255,255,0.03)" fill="none" stroke-width="1" /></svg>');
-        background-size: 300px 300px;
-        opacity: 0.6;
-        z-index: -1;
-    }
-
-    .language-selection {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 2000;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-
-    .language-selection.show {
-        display: flex;
-        opacity: 1;
-    }
-
-    .language-container {
-        text-align: center;
-        padding: 20px;
-    }
-
-    .language-container h1 {
-        font-size: 3rem;
-        margin-bottom: 40px;
-    }
-
-    .language-buttons {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-    }
-
-    .language-btn {
-        padding: 15px 30px;
-        background: var(--accent-color);
-        color: var(--light-color);
-        text-decoration: none;
-        border-radius: 50px;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: all var(--transition-speed);
-    }
-
-    .language-btn:hover {
-        background: #e8635c;
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(255, 111, 97, 0.4);
-    }
-
-    header {
-        position: fixed;
-        width: 100%;
-        z-index: 1000;
-        transition: all var(--transition-speed);
-    }
-
-    .header-scrolled {
-        background: var(--nav-bg);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: var(--spacing-md) var(--spacing-xl);
-        transition: all var(--transition-speed);
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        text-decoration: none;
-        color: var(--light-color);
-    }
-
-    .logo i {
-        margin-right: var(--spacing-sm);
-        color: var(--accent-color);
-    }
-
-    body.rtl .logo i {
-        margin-right: 0;
-        margin-left: var(--spacing-sm);
-    }
-
-    .nav-links {
-        display: flex;
-        gap: var(--spacing-lg);
-        align-items: center;
-    }
-
-    nav a {
-        color: var(--light-color);
-        text-decoration: none;
-        font-size: 1rem;
-        font-weight: 500;
-        position: relative;
-        padding: var(--spacing-sm);
-        transition: all var(--transition-speed);
-        cursor: pointer;
-    }
-
-    nav a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--accent-color);
-        transition: width var(--transition-speed);
-    }
-
-    body.rtl nav a::after {
-        left: auto;
-        right: 0;
-    }
-
-    nav a:hover::after, nav a.active::after {
-        width: 100%;
-    }
-
-    .nav-toggle {
-        display: none;
-        background: none;
-        border: none;
-        color: var(--light-color);
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    .language-toggle {
-        background: none;
-        border: none;
-        color: var(--light-color);
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: all var(--transition-speed);
-    }
-
-    .language-toggle:hover {
-        color: var(--accent-color);
-    }
-
-    .content {
-        padding-top: 100px;
-        flex-grow: 1;
-    }
-
-    section {
-        padding: var(--spacing-xl) var(--spacing-lg);
-        display: none;
-    }
-
-    section.active {
-        display: block;
-        animation: fadeIn 0.5s ease forwards;
-    }
-
-    .hero {
-        text-align: center;
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .hero h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: var(--spacing-md);
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInUp 1s forwards 0.3s;
-    }
-
-    .hero h1 span {
-        color: var(--accent-color);
-        position: relative;
-        display: inline-block;
-    }
-
-    .hero h1 span::after {
-        content: '';
-        position: absolute;
-        height: 8px;
-        width: 100%;
-        background-color: rgba(255, 111, 97, 0.3);
-        bottom: 5px;
-        left: 0;
-        z-index: -1;
-    }
-
-    body.rtl .hero h1 span::after {
-        left: auto;
-        right: 0;
-    }
-
-    #announcement {
-        font-size: 1.5rem;
-        margin-bottom: var(--spacing-xl);
-        min-height: 2em;
-    }
-
-    .announcement-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: var(--spacing-lg);
-        border-radius: var(--border-radius);
-        background: rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(5px);
-        box-shadow: var(--box-shadow);
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 1s forwards 0.6s;
-    }
-
-    .cta-button {
-        display: inline-block;
-        margin-top: var(--spacing-lg);
-        padding: 15px 40px;
-        background: var(--accent-color);
-        color: var(--light-color);
-        border: none;
-        border-radius: 50px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all var(--transition-speed);
-        text-decoration: none;
-        box-shadow: 0 10px 20px rgba(255, 111, 97, 0.3);
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 1s forwards 0.9s;
-    }
-
-    .cta-button:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 25px rgba(255, 111, 97, 0.5);
-    }
-
-    .floating-icon {
-        position: absolute;
-        opacity: 0.1;
-        animation: float 6s ease-in-out infinite;
-    }
-
-    .floating-icon:nth-child(1) { top: 15%; left: 10%; font-size: 2rem; animation-delay: 0s; }
-    .floating-icon:nth-child(2) { top: 30%; right: 15%; font-size: 3rem; animation-delay: 1s; }
-    .floating-icon:nth-child(3) { bottom: 20%; left: 15%; font-size: 2.5rem; animation-delay: 2s; }
-    .floating-icon:nth-child(4) { bottom: 30%; right: 10%; font-size: 2rem; animation-delay: 3s; }
-
-    body.rtl .floating-icon:nth-child(1) { left: auto; right: 10%; }
-    body.rtl .floating-icon:nth-child(2) { right: auto; left: 15%; }
-    body.rtl .floating-icon:nth-child(3) { left: auto; right: 15%; }
-    body.rtl .floating-icon:nth-child(4) { right: auto; left: 10%; }
-
-    .section-title {
-        text-align: center;
-        margin-bottom: var(--spacing-xl);
-        font-size: 2.5rem;
-        font-weight: 700;
-    }
-
-    .section-title::after {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 4px;
-        background: var(--accent-color);
-        margin: 15px auto;
-        border-radius: 2px;
-    }
-
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: var(--spacing-lg);
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .service-card {
-        background: var(--card-bg);
-        border-radius: var(--border-radius);
-        padding: var(--spacing-lg);
-        text-align: center;
-        transition: all var(--transition-speed);
-        color: var(--light-color);
-        overflow: hidden;
-        position: relative;
-        box-shadow: var(--box-shadow);
-        backdrop-filter: blur(5px);
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        text-decoration: none;
-    }
-
-    .service-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(255, 111, 97, 0.2), transparent);
-        z-index: -1;
-        opacity: 0;
-        transition: opacity var(--transition-speed);
-    }
-
-    body.rtl .service-card::before {
-        left: auto;
-        right: 0;
-    }
-
-    .service-card:hover {
-        transform: translateY(-10px);
-    }
-
-    .service-card:hover::before {
-        opacity: 1;
-    }
-
-    .service-icon {
-        font-size: 3rem;
-        margin-bottom: var(--spacing-md);
-        color: var(--accent-color);
-    }
-
-    .service-card h3 {
-        margin: 0 0 var(--spacing-md);
-        font-size: 1.5rem;
-    }
-
-    .service-card p {
-        margin: 0;
-        font-size: 1rem;
-        opacity: 0.8;
-        flex-grow: 1;
-    }
-
-    .service-cta {
-        margin-top: var(--spacing-md);
-        padding: var(--spacing-sm) 0;
-        color: var(--accent-color);
-        font-weight: 600;
-        position: relative;
-        display: inline-block;
-    }
-
-    .service-cta::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--accent-color);
-        transition: width var(--transition-speed);
-    }
-
-    body.rtl .service-cta::after {
-        left: auto;
-        right: 0;
-    }
-
-    .service-card:hover .service-cta::after {
-        width: 100%;
-    }
-
-    .testimonial-container {
-        max-width: 800px;
-        margin: 0 auto;
-        position: relative;
-    }
-
-    .testimonial {
-        padding: var(--spacing-xl);
-        border-radius: var(--border-radius);
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        margin: 0 auto;
-        box-shadow: var(--box-shadow);
-        display: none;
-    }
-
-    .testimonial.active {
-        display: block;
-        animation: fadeIn 0.5s ease forwards;
-    }
-
-    .testimonial-quote {
-        font-size: 1.5rem;
-        line-height: 1.6;
-        font-style: italic;
-        margin-bottom: var(--spacing-lg);
-    }
-
-    .testimonial-author {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .testimonial-avatar {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin-right: var(--spacing-md);
-    }
-
-    body.rtl .testimonial-author {
-        flex-direction: row-reverse;
-    }
-
-    body.rtl .testimonial-avatar {
-        margin-right: 0;
-        margin-left: var(--spacing-md);
-    }
-
-    .testimonial-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .testimonial-info h4 {
-        margin: 0;
-        font-size: 1.2rem;
-    }
-
-    .testimonial-info p {
-        margin: 5px 0 0;
-        opacity: 0.7;
-        font-size: 0.9rem;
-    }
-
-    .testimonial-controls {
-        display: flex;
-        justify-content: center;
-        margin-top: var(--spacing-lg);
-        gap: var(--spacing-sm);
-    }
-
-    .testimonial-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        cursor: pointer;
-        transition: all var(--transition-speed);
-    }
-
-    .testimonial-dot.active {
-        background: var(--accent-color);
-        transform: scale(1.2);
-    }
-
-    .contact-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: var(--spacing-xl);
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .contact-info {
-        flex: 1;
-        min-width: 300px;
-        padding: var(--spacing-lg);
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: var(--border-radius);
-        text-align: left;
-        backdrop-filter: blur(5px);
-    }
-
-    body.rtl .contact-info {
-        text-align: right;
-    }
-
-    .contact-info h3 {
-        margin-bottom: var(--spacing-lg);
-        font-size: 1.8rem;
-    }
-
-    .contact-method {
-        display: flex;
-        align-items: center;
-        margin-bottom: var(--spacing-md);
-    }
-
-    body.rtl .contact-method {
-        flex-direction: row-reverse;
-    }
-
-    .contact-method i {
-        width: 40px;
-        height: 40px;
-        background: var(--accent-color);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: var(--spacing-md);
-        font-size: 1.2rem;
-    }
-
-    body.rtl .contact-method i {
-        margin-right: 0;
-        margin-left: var(--spacing-md);
-    }
-
-    .contact-method div p {
-        margin: 0;
-    }
-
-    .contact-method div p:first-child {
-        font-weight: 600;
-        margin-bottom: 3px;
-    }
-
-    .social-links {
-        display: flex;
-        gap: var(--spacing-md);
-        margin-top: var(--spacing-lg);
-    }
-
-    body.rtl .social-links {
-        justify-content: flex-end;
-    }
-
-    .social-link {
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: var(--light-color);
-        text-decoration: none;
-        transition: all var(--transition-speed);
-    }
-
-    .social-link:hover {
-        background: var(--accent-color);
-        transform: translateY(-5px);
-    }
-
-    .contact-form {
-        flex: 1;
-        min-width: 300px;
-        padding: var(--spacing-lg);
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: var(--border-radius);
-        backdrop-filter: blur(5px);
-    }
-
-    .contact-form h3 {
-        margin-bottom: var(--spacing-lg);
-        font-size: 1.8rem;
-        text-align: left;
-    }
-
-    body.rtl .contact-form h3 {
-        text-align: right;
-    }
-
-    .form-group {
-        margin-bottom: var(--spacing-md);
-        text-align: left;
-    }
-
-    body.rtl .form-group {
-        text-align: right;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: 500;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 12px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 5px;
-        color: var(--light-color);
-        font-family: inherit;
-        transition: all var(--transition-speed);
-    }
-
-    .form-control:focus {
-        outline: none;
-        border-color: var(--accent-color);
-        background: rgba(255, 255, 255, 0.15);
-    }
-
-    textarea.form-control {
-        resize: vertical;
-        min-height: 120px;
-    }
-
-    .submit-btn {
-        background: var(--accent-color);
-        color: var(--light-color);
-        border: none;
-        padding: 12px 30px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: all var(--transition-speed);
-        width: 100%;
-    }
-
-    .submit-btn:hover {
-        background: #e8635c;
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
-    }
-
-    footer {
-        background: var(--footer-bg);
-        padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
-        position: relative;
-    }
-
-    .footer-content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: var(--spacing-xl);
-        max-width: 1200px;
-        margin: 0 auto var(--spacing-xl);
-    }
-
-    .footer-logo {
-        flex: 1;
-        min-width: 250px;
-    }
-
-    .footer-logo h2 {
-        font-size: 1.8rem;
-        margin-bottom: var(--spacing-md);
-        color: var(--light-color);
-    }
-
-    .footer-logo p {
-        opacity: 0.7;
-        margin-bottom: var(--spacing-md);
-        line-height: 1.6;
-    }
-
-    .footer-links {
-        flex: 1;
-        min-width: 150px;
-    }
-
-    .footer-links h3 {
-        font-size: 1.2rem;
-        margin-bottom: var(--spacing-md);
-        color: var(--light-color);
-    }
-
-    .footer-links ul {
-        list-style: none;
-    }
-
-    .footer-links li {
-        margin-bottom: 10px;
-    }
-
-    .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        transition: all var(--transition-speed);
-        cursor: pointer;
-    }
-
-    .footer-links a:hover {
-        color: var(--accent-color);
-        padding-left: 5px;
-    }
-
-    body.rtl .footer-links a:hover {
-        padding-left: 0;
-        padding-right: 5px;
-    }
-
-    .footer-newsletter {
-        flex: 1;
-        min-width: 250px;
-    }
-
-    .footer-newsletter h3 {
-        font-size: 1.2rem;
-        margin-bottom: var(--spacing-md);
-        color: var(--light-color);
-    }
-
-    .footer-newsletter p {
-        opacity: 0.7;
-        margin-bottom: var(--spacing-md);
-        line-height: 1.6;
-    }
-
-    .newsletter-form {
-        display: flex;
-        margin-bottom: var(--spacing-md);
-    }
-
-    .newsletter-input {
-        flex-grow: 1;
-        padding: 10px 15px;
-        border: none;
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--light-color);
-        border-radius: 5px 0 0 5px;
-    }
-
-    body.rtl .newsletter-input {
-        border-radius: 0 5px 5px 0;
-    }
-
-    .newsletter-input:focus {
-        outline: none;
-        background: rgba(255, 255, 255, 0.15);
-    }
-
-    .newsletter-btn {
-        background: var(--accent-color);
-        color: var(--light-color);
-        border: none;
-        padding: 0 15px;
-        border-radius: 0 5px 5px 0;
-        cursor: pointer;
-    }
-
-    body.rtl .newsletter-btn {
-        border-radius: 5px 0 0 5px;
-    }
-
-    .copyright {
-        text-align: center;
-        padding-top: var(--spacing-lg);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        opacity: 0.7;
-        font-size: 0.9rem;
-    }
-
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(5px);
-        justify-content: center;
-        align-items: center;
-        z-index: 1100;
-        opacity: 0;
-        transition: opacity var(--transition-speed);
-    }
-
-    .modal.show {
-        display: flex;
-        opacity: 1;
-    }
-
-    .modal-content {
-        background: linear-gradient(135deg, #2a5298, #1e3c72);
-        color: var(--light-color);
-        padding: var(--spacing-xl);
-        border-radius: var(--border-radius);
-        text-align: center;
-        max-width: 500px;
-        width: 90%;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
-        transform: translateY(30px);
-        opacity: 0;
-        transition: all 0.5s;
-    }
-
-    .modal.show .modal-content {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    .modal-content h2 {
-        font-size: 2rem;
-        margin-bottom: var(--spacing-md);
-    }
-
-    .modal-content p {
-        margin-bottom: var(--spacing-lg);
-        line-height: 1.6;
-    }
-
-    .modal-close {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        font-size: 1.5rem;
-        color: var(--light-color);
-        background: none;
-        border: none;
-        cursor: pointer;
-        opacity: 0.7;
-        transition: opacity var(--transition-speed);
-    }
-
-    body.rtl .modal-close {
-        right: auto;
-        left: 15px;
-    }
-
-    .modal-close:hover {
-        opacity: 1;
-    }
-
-    .modal-buttons {
-        display: flex;
-        gap: var(--spacing-md);
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .modal-button {
-        padding: 12px 25px;
-        background: var(--accent-color);
-        color: var(--light-color);
-        border: none;
-        border-radius: 50px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all var(--transition-speed);
-        box-shadow: 0 5px 15px rgba(255, 111, 97, 0.3);
-    }
-
-    .modal-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(255, 111, 97, 0.5);
-    }
-
-    .modal-button.secondary {
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    .modal-button.secondary:hover {
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-        100% { transform: translateY(0); }
-    }
-
-    .back-to-top {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        background: var(--accent-color);
-        color: var(--light-color);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all var(--transition-speed);
-        z-index: 99;
-        cursor: pointer;
-    }
-
-    body.rtl .back-to-top {
-        right: auto;
-        left: 30px;
-    }
-
-    .back-to-top.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .back-to-top:hover {
-        background: #e8635c;
-        transform: translateY(-5px);
-    }
-
-    @media (max-width: 1024px) {
-        .hero h1 { font-size: 3rem; }
-        .section-title { font-size: 2.2rem; }
-    }
-
-    @media (max-width: 768px) {
-        nav { padding: var(--spacing-md); }
-        .nav-toggle { display: block; }
-        .nav-links {
-            position: absolute;
-            top: 100%;
-            left: 0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding-top: 80px;
+            color: var(--dark);
+            direction: rtl;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
             width: 100%;
-            background: var(--nav-bg);
-            flex-direction: column;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+            z-index: 1000;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        .nav-container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .nav-link {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 20px 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
             align-items: center;
-            padding: var(--spacing-md) 0;
-            gap: var(--spacing-md);
+            gap: 8px;
+        }
+        
+        .nav-link i {
+            font-size: 1.1rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 25px;
+            left: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .tab-content {
             display: none;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            max-width: 1000px;
+            width: 95%;
+            animation: fadeIn 0.4s ease;
         }
-        body.rtl .nav-links {
-            left: auto;
-            right: 0;
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .nav-links.active { display: flex; }
-        .hero h1 { font-size: 2.5rem; }
-        #announcement { font-size: 1.2rem; }
-        .section-title { font-size: 2rem; }
-        .testimonial-quote { font-size: 1.2rem; }
-        .contact-container { flex-direction: column; }
-        .footer-content { flex-direction: column; gap: var(--spacing-lg); }
-    }
-
-    @media (max-width: 480px) {
-        .hero h1 { font-size: 2rem; }
-        .cta-button { padding: 12px 30px; font-size: 1rem; }
-        .section-title { font-size: 1.8rem; }
-        .testimonial-quote { font-size: 1rem; }
-        .back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
-        body.rtl .back-to-top { right: auto; left: 20px; }
-    }
-</style>
-
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(67, 97, 238, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(67, 97, 238, 0.25);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-stop {
+            background-color: var(--danger);
+            box-shadow: 0 4px 6px rgba(247, 37, 133, 0.2);
+        }
+        
+        .btn-stop:hover {
+            background-color: #e3176a;
+            box-shadow: 0 6px 12px rgba(247, 37, 133, 0.25);
+        }
+        
+        .btn-success {
+            background-color: var(--success);
+            box-shadow: 0 4px 6px rgba(76, 201, 240, 0.2);
+        }
+        
+        .btn-success:hover {
+            background-color: #3ab7d8;
+            box-shadow: 0 6px 12px rgba(76, 201, 240, 0.25);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        .list {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 0;
+            margin: 25px 0;
+        }
+        
+        .list-item {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        
+        .list-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .badge-primary {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+        
+        .badge-success {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--success);
+        }
+        
+        .badge-danger {
+            background-color: rgba(247, 37, 133, 0.1);
+            color: var(--danger);
+        }
+        
+        .total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: left;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: var(--light);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--success);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            z-index: 2000;
+            display: none;
+            font-weight: 600;
+            animation: alertIn 0.3s ease;
+        }
+        
+        @keyframes alertIn {
+            from { opacity: 0; transform: translate(-50%, -40%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            margin: 12px 0;
+            background-color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary);
+        }
+        
+        .resource-link i {
+            margin-left: 15px;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .resource-link:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--light-gray);
+        }
+        
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .option-card {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid var(--light-gray);
+        }
+        
+        .option-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+        }
+        
+        .option-card.selected {
+            border-color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+        
+        .option-card i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-small {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+        
+        .edit-form {
+            display: none;
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            background-color: var(--light-gray);
+            border-radius: 5px;
+            height: 20px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .dashboard-card {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+        }
+        
+        .dashboard-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-card .edit-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 0.9rem;
+            padding: 5px 10px;
+        }
+        
+        .resource-category {
+            margin-bottom: 30px;
+        }
+        
+        .resource-category h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .task-item input[type="checkbox"] {
+            margin-left: 10px;
+        }
+        
+        .keyword-suggestions {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .keyword-suggestions span {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px;
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .keyword-suggestions span:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .keyword-suggestions span.excluded {
+            background-color: rgba(247, 37, 133, 0.1);
+            color: var(--danger);
+            text-decoration: line-through;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-link {
+                padding: 15px 20px;
+                font-size: 0.9rem;
+            }
+            .tab-content {
+                padding: 20px 15px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
 </head>
 <body>
-    <div class="language-selection" id="languageSelection">
-        <div class="language-container">
-            <h1 data-en="Welcome to YJURVEY Enterprise" data-he="ברוכים הבאים למפעל YJURVEY"></h1>
-            <div class="language-buttons">
-                <button class="language-btn" onclick="setLanguage('en')">English</button>
-                <button class="language-btn" onclick="setLanguage('he')">עברית</button>
-            </div>
-        </div>
-    </div>
-<header id="header">
-    <nav>
-        <a class="logo" data-section="home">
-            <i class="fas fa-rocket"></i>
-            <span>YJURVEY</span>
-        </a>
-        <button class="nav-toggle" id="navToggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="nav-links" id="navLinks">
-            <a data-section="home" data-en="Home" data-he="בית"></a>
-            <a data-section="services" data-en="Services" data-he="שירותים"></a>
-            <a data-section="testimonials" data-en="Testimonials" data-he="המלצות"></a>
-            <a data-section="contact" data-en="Contact" data-he="צור קשר"></a>
-            <button class="language-toggle" id="languageToggle" title="Change Language">
-                <i class="fas fa-globe"></i>
-            </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-link active" data-tab="dashboard"><i class="fas fa-chart-line"></i> לוח בקרה</a>
+            <a href="#" class="nav-link" data-tab="projects"><i class="fas fa-project-diagram"></i> תכנון פרויקטים</a>
+            <a href="#" class="nav-link" data-tab="budget"><i class="fas fa-wallet"></i> ניהול תקציב</a>
+            <a href="#" class="nav-link" data-tab="freelancers"><i class="fas fa-search"></i> חיפוש פרילנסרים</a>
+            <a href="#" class="nav-link" data-tab="productivity"><i class="fas fa-bell"></i> תזכורות ומשימות</a>
+            <a href="#" class="nav-link" data-tab="resources"><i class="fas fa-link"></i> משאבים</a>
         </div>
     </nav>
-</header>
+    <div class="alert" id="alert"></div>
 
-<div class="content">
-    <section class="hero active" id="home">
-        <i class="fas fa-lightbulb floating-icon"></i>
-        <i class="fas fa-code floating-icon"></i>
-        <i class="fas fa-chart-line floating-icon"></i>
-        <i class="fas fa-shopping-cart floating-icon"></i>
-        <h1 data-en="Welcome to <span>YJURVEY</span> Enterprise" data-he="ברוכים הבאים ל-<span>YJURVEY</span> מפעל"></h1>
-        <div class="announcement-container">
-            <p id="announcement" data-en="I am glad to announce the formation of the YJURVEY Enterprise!" data-he="שמח להכריז על הקמת מפעל YJURVEY!"></p>
-            <a class="cta-button" data-section="services" data-en="Explore Our Services" data-he="גלה את השירותים שלנו"></a>
-        </div>
-    </section>
-
-    <section id="services">
-        <h2 class="section-title" data-en="Our Services" data-he="השירותים שלנו"></h2>
-        <div class="services-grid">
-            <a href="https://jurvry.github.io/Your-kitchen/%D7%91%D7%99%D7%AA%20%D7%94%D7%9E%D7%98%D7%91%D7%97%20%D7%A9%D7%9C%D7%9A.html" class="service-card" target="_blank">
-                <i class="fas fa-utensils service-icon"></i>
-                <h3 data-en="Your Kitchen" data-he="המטבח שלך"></h3>
-                <p data-en="Discover tools and inspiration for your home kitchen (Hebrew)." data-he="גלה כלים והשראה למטבח הביתי שלך (עברית)."></p>
-                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף"></span>
-            </a>
-            <a href="https://jurvry.github.io/Getaway-Good/Getaway%20Good.html" class="service-card" target="_blank">
-                <i class="fas fa-suitcase service-icon"></i>
-                <h3 data-en="Getaway Good" data-he="חופשה טובה"></h3>
-                <p data-en="Personalized vacation add-ons from $20, delivered via WhatsApp." data-he="תוספות מותאמות אישית לחופשה החל מ-20 דולר, נשלחות דרך וואטסאפ."></p>
-                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף"></span>
-            </a>
-            <a href="https://jurvry.github.io/enhanceyourvacation/enhanceyourvacation.html" class="service-card" target="_blank">
-                <i class="fas fa-plane-departure service-icon"></i>
-                <h3 data-en="Enhance Your Vacation" data-he="שפר את החופשה שלך"></h3>
-                <p data-en="Custom vacation packages for your next adventure." data-he="חבילות חופשה מותאמות להרפתקה הבאה שלך."></p>
-                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף"></span>
-            </a>
-            <a href="https://jurvry.github.io/WhatsApp-Status-Assistant/WhatsApp%20Status%20Assistant.html" class="service-card" target="_blank">
-                <i class="fab fa-whatsapp service-icon"></i>
-                <h3 data-en="WhatsApp Status Assistant" data-he="עוזר סטטוס וואטסאפ"></h3>
-                <p data-en="Create standout WhatsApp statuses with ease." data-he="צור סטטוסים בולטים בוואטסאפ בקלות."></p>
-                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף"></span>
-            </a>
-            <a href="https://jurvry.github.io/dreamcraft/Innovation.html" class="service-card" target="_blank">
-                <i class="fas fa-lightbulb service-icon"></i>
-                <h3 data-en="Innovation" data-he="חדשנות"></h3>
-                <p data-en="Unleash creativity with innovative solutions." data-he="שחרר יצירתיות עם פתרונות חדשניים."></p>
-                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף"></span>
-            </a>
-            <a href="https://jurvry.github.io/Stock-Learning-/index%20(55).html" class="service-card" target="_blank">
-                <i class="fas fa-chart-bar service-icon"></i>
-                <h3 data-en="Stock Learning Hub" data-he="מרכז לימודי מניות"></h3>
-                <p data-en="Master the stock market with our learning hub." data-he="שלוט בשוק המניות עם מרכז הלימוד שלנו."></p>
-                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף"></span>
-            </a>
-            <a href="https://jurvry.github.io/Smart-Entrepreneurship/Smart%20Entrepreneurship.html" class="service-card" target="_blank">
-                <i class="fas fa-briefcase service-icon"></i>
-                <h3 data-en="Smart Entrepreneurship" data-he="יזמות חכמה"></h3>
-                <p data-en="Resources and tools for modern entrepreneurs." data-he="משאבים וכלים ליזמים מודרניים."></p>
-                <span class="service-cta" data-en="Learn More" data-he="למידע נוסף"></span>
-            </a>
-        </div>
-    </section>
-
-    <section id="testimonials">
-        <h2 class="section-title" data-en="What People Say" data-he="מה אנשים אומרים"></h2>
-        <div class="testimonial-container">
-            <div class="testimonial active">
-                <p class="testimonial-quote" data-en='"YJURVEY transformed my vacation planning with Getaway Good!"' data-he='"YJURVEY שינה את תכנון החופשה שלי עם חופשה טובה!"'></p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">
-                        <img src="https://via.placeholder.com/60" alt="User Avatar">
-                    </div>
-                    <div class="testimonial-info">
-                        <h4 data-en="Sarah M." data-he="שרה מ."></h4>
-                        <p data-en="Travel Enthusiast" data-he="חובבת טיולים"></p>
-                    </div>
+    <div class="tab-content active" id="dashboard">
+        <h1><i class="fas fa-chart-line"></i> לוח בקרה עסקי</h1>
+        <button class="btn btn-outline" id="edit-dashboard-btn" style="margin-bottom: 20px;"><i class="fas fa-edit"></i> ערוך לוח בקרה</button>
+        <div class="edit-form" id="dashboard-settings" style="margin-bottom: 20px;">
+            <form id="dashboard-form">
+                <div class="form-group">
+                    <label for="budget-goal"><i class="fas fa-shekel-sign"></i> יעד תקציב (₪):</label>
+                    <input type="number" id="budget-goal" min="0" step="1" placeholder="לדוגמה: 10000">
                 </div>
-            </div>
-            <div class="testimonial">
-                <p class="testimonial-quote" data-en='"The WhatsApp Status Assistant is a game-changer for my social media."' data-he='"עוזר הסטטוס של וואטסאפ הוא משנה משחק עבור המדיה החברתית שלי."'></p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">
-                        <img src="https://via.placeholder.com/60" alt="User Avatar">
-                    </div>
-                    <div class="testimonial-info">
-                        <h4 data-en="John D." data-he="ג'ון ד."></h4>
-                        <p data-en="Content Creator" data-he="יוצר תוכן"></p>
-                    </div>
+                <div class="form-group">
+                    <label for="milestone-goal"><i class="fas fa-project-diagram"></i> יעד אבני דרך:</label>
+                    <input type="number" id="milestone-goal" min="0" step="1" placeholder="לדוגמה: 5">
                 </div>
-            </div>
-            <div class="testimonial">
-                <p class="testimonial-quote" data-en='"Innovation from YJURVEY sparked my next big idea."' data-he='"חדשנות מ-YJURVEY הציתה את הרעיון הגדול הבא שלי."'></p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">
-                        <img src="https://via.placeholder.com/60" alt="User Avatar">
-                    </div>
-                    <div class="testimonial-info">
-                        <h4 data-en="Emily R." data-he="אמילי ר."></h4>
-                        <p data-en="Entrepreneur" data-he="יזמית"></p>
-                    </div>
+                <div class="form-group">
+                    <label for="task-goal"><i class="fas fa-check-square"></i> יעד משימות:</label>
+                    <input type="number" id="task-goal" min="0" step="1" placeholder="לדוגמה: 10">
                 </div>
-            </div>
-            <div class="testimonial-controls">
-                <span class="testimonial-dot active" data-index="0"></span>
-                <span class="testimonial-dot" data-index="1"></span>
-                <span class="testimonial-dot" data-index="2"></span>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2 class="section-title" data-en="Get in Touch" data-he="צור קשר"></h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3 data-en="Contact Us" data-he="צור איתנו קשר"></h3>
-                <div class="contact-method">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <p data-en="Phone" data-he="טלפון"></p>
-                        <p>0552436543</p>
-                    </div>
-                </div>
-                <div class="contact-method">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <p data-en="Email" data-he="אימייל"></p>
-                        <p>yjurvey61@gmail.com</p>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <div class="contact-form">
-                <h3 data-en="Send a Message" data-he="שלח הודעה"></h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name" data-en="Name" data-he="שם"></label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" data-en="Email" data-he="אימייל"></label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" data-en="Message" data-he="הודעה"></label>
-                        <textarea id="message" class="form-control" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" data-en="Send Message" data-he="שלח הודעה"></button>
-                </form>
-            </div>
-        </div>
-    </section>
-</div>
-
-<footer>
-    <div class="footer-content">
-        <div class="footer-logo">
-            <h2>YJURVEY Enterprise</h2>
-            <p data-en="Innovative solutions for modern living. Join us in shaping the future." data-he="פתרונות חדשניים לחיים מודרניים. הצטרף אלינו לעיצוב העתיד."></p>
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-        <div class="footer-links">
-            <h3 data-en="Quick Links" data-he="קישורים מהירים"></h3>
-            <ul>
-                <li><a data-section="home" data-en="Home" data-he="בית"></a></li>
-                <li><a data-section="services" data-en="Services" data-he="שירותים"></a></li>
-                <li><a data-section="testimonials" data-en="Testimonials" data-he="המלצות"></a></li>
-                <li><a data-section="contact" data-en="Contact" data-he="צור קשר"></a></li>
-            </ul>
-        </div>
-        <div class="footer-newsletter">
-            <h3 data-en="Newsletter" data-he="ניוזלטר"></h3>
-            <p data-en="Stay updated with our latest innovations." data-he="הישאר מעודכן עם החידושים האחרונים שלנו."></p>
-            <form class="newsletter-form">
-                <input type="email" class="newsletter-input" data-en-placeholder="Your Email" data-he-placeholder="האימייל שלך" required>
-                <button type="submit" class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
+                <button type="submit" class="btn"><i class="fas fa-save"></i> שמור</button>
+                <button type="button" class="btn btn-outline" id="cancel-edit"><i class="fas fa-times"></i> בטל</button>
             </form>
         </div>
+        <div class="dashboard-grid" id="dashboard-grid"></div>
     </div>
-    <div class="copyright" data-en="© 2025 YJURVEY Enterprise. All Rights Reserved." data-he="© 2025 מפעל YJURVEY. כל הזכויות שמורות."></div>
-</footer>
 
-<div class="modal" id="welcomeModal">
-    <div class="modal-content">
-        <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
-        <h2 data-en="Welcome to YJURVEY!" data-he="ברוכים הבאים ל-YJURVEY!"></h2>
-        <p data-en="We’re thrilled to announce the formation of YJURVEY Enterprise. Explore our innovative services and join us on this journey!" data-he="אנו שמחים להכריז על הקמת מפעל YJURVEY. גלה את השירותים החדשניים שלנו והצטרף אלינו למסע הזה!"></p>
-        <div class="modal-buttons">
-            <button class="modal-button" data-section="services" data-en="Explore Now" data-he="גלה עכשיו"></button>
-            <button class="modal-button secondary" id="modalCloseSecondary" data-en="Close" data-he="סגור"></button>
+    <div class="tab-content" id="projects">
+        <h1><i class="fas fa-project-diagram"></i> תכנון פרויקטים</h1>
+        <form id="project-form">
+            <div class="form-group">
+                <label for="project-name"><i class="fas fa-tag"></i> שם הפרויקט:</label>
+                <input type="text" id="project-name" required placeholder="לדוגמה: השקת אתר חדש">
+            </div>
+            <div class="form-group">
+                <label for="milestone"><i class="fas fa-flag"></i> אבן דרך:</label>
+                <input type="text" id="milestone" required placeholder="לדוגמה: עיצוב ראשוני">
+            </div>
+            <div class="form-group">
+                <label for="deadline"><i class="fas fa-calendar-alt"></i> תאריך יעד:</label>
+                <input type="date" id="deadline" required>
+            </div>
+            <button type="submit" class="btn"><i class="fas fa-plus"></i> הוסף אבן דרך</button>
+        </form>
+        <div class="list" id="project-list"></div>
+    </div>
+
+    <div class="tab-content" id="budget">
+        <h1><i class="fas fa-wallet"></i> ניהול תקציב</h1>
+        <form id="expense-form">
+            <div class="form-group">
+                <label for="expense-name"><i class="fas fa-tag"></i> שם ההוצאה:</label>
+                <input type="text" id="expense-name" required placeholder="לדוגמה: פרסום בפייסבוק">
+            </div>
+            <div class="form-group">
+                <label for="expense-amount"><i class="fas fa-shekel-sign"></i> סכום (₪):</label>
+                <input type="number" id="expense-amount" min="0" step="0.01" required placeholder="לדוגמה: 500">
+            </div>
+            <div class="form-group">
+                <label for="expense-category"><i class="fas fa-folder"></i> קטגוריה:</label>
+                <select id="expense-category" required>
+                    <option value="" disabled selected>בחר קטגוריה</option>
+                    <option value="marketing">שיווק</option>
+                    <option value="development">פיתוח</option>
+                    <option value="design">עיצוב</option>
+                    <option value="office">משרד</option>
+                    <option value="other">אחר</option>
+                </select>
+            </div>
+            <button type="submit" class="btn"><i class="fas fa-plus"></i> הוסף הוצאה</button>
+        </form>
+        <div class="list" id="expenses-list"></div>
+        <div class="total" id="total-expenses"><span>סה"כ הוצאות:</span><span>₪0.00</span></div>
+        <div id="budget-summary" style="margin-top: 20px;"></div>
+    </div>
+
+    <div class="tab-content" id="freelancers">
+        <h1><i class="fas fa-search"></i> חיפוש פרילנסרים מתקדם</h1>
+        <div class="form-group">
+            <label><i class="fas fa-tasks"></i> בחר את סוג השירות:</label>
+            <div class="option-grid" id="service-options">
+                <div class="option-card" data-service="design"><i class="fas fa-paint-brush"></i><p>עיצוב גרפי</p></div>
+                <div class="option-card" data-service="development"><i class="fas fa-code"></i><p>פיתוח אתרים/תוכנה</p></div>
+                <div class="option-card" data-service="marketing"><i class="fas fa-bullhorn"></i><p>שיווק דיגיטלי</p></div>
+                <div class="option-card" data-service="writing"><i class="fas fa-pen"></i><p>כתיבה ועריכה</p></div>
+                <div class="option-card" data-service="other"><i class="fas fa-question"></i><p>אחר</p></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="project-details"><i class="fas fa-info-circle"></i> פרטים נוספים:</label>
+            <textarea id="project-details" rows="3" placeholder="תאר את הפרויקט שלך (לדוגמה: אני צריך לוגו מודרני לעסק שלי)"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="project-budget"><i class="fas fa-shekel-sign"></i> תקציב (₪):</label>
+            <input type="number" id="project-budget" min="0" step="1" placeholder="לדוגמה: 1000">
+        </div>
+        <div class="form-group">
+            <label for="project-timeline"><i class="fas fa-calendar-alt"></i> זמן ביצוע:</label>
+            <select id="project-timeline">
+                <option value="urgent">דחוף (עד שבוע)</option>
+                <option value="short">קצר (1-2 שבועות)</option>
+                <option value="medium">בינוני (3-4 שבועות)</option>
+                <option value="long">ארוך (חודש ומעלה)</option>
+            </select>
+        </div>
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button class="btn" id="analyze-needs"><i class="fas fa-brain"></i> נתח צרכים</button>
+            <button class="btn btn-outline" id="reset-form"><i class="fas fa-undo"></i> אפס</button>
+        </div>
+        <div class="keyword-suggestions" id="keyword-suggestions" style="display: none;">
+            <h3><i class="fas fa-key"></i> מילות מפתח מומלצות:</h3>
+            <div id="suggested-keywords"></div>
+            <button class="btn btn-success" id="generate-links" style="margin-top: 15px;"><i class="fas fa-link"></i> צור קישורי חיפוש</button>
+        </div>
+        <div id="search-results" style="margin-top: 20px;"></div>
+    </div>
+
+    <div class="tab-content" id="productivity">
+        <h1><i class="fas fa-bell"></i> תזכורות ומשימות</h1>
+        <div class="form-group">
+            <label for="reminder-frequency"><i class="fas fa-clock"></i> תדירות תזכורת:</label>
+            <select id="reminder-frequency">
+                <option value="hourly">שעתית</option>
+                <option value="daily">יומית</option>
+                <option value="weekly">שבועית</option>
+            </select>
+        </div>
+        <div style="display: flex; gap: 10px; margin: 20px 0;">
+            <button class="btn pulse" id="start-reminders"><i class="fas fa-play"></i> התחל תזכורות</button>
+            <button class="btn btn-stop" id="stop-reminders"><i class="fas fa-stop"></i> עצור תזכורות</button>
+        </div>
+        <div style="margin-top: 40px; text-align: center; padding: 30px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px;">
+            <h3 style="margin-bottom: 20px; color: var(--primary);"><i class="fas fa-quote-left"></i> ציטוט מוטיבציה יומי <i class="fas fa-quote-right"></i></h3>
+            <p id="motivation-quote" style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 25px;">"הדרך להצלחה מתחילה בצעד הראשון."</p>
+            <button class="btn btn-success" id="new-quote"><i class="fas fa-sync-alt"></i> ציטוט חדש</button>
+        </div>
+        <div class="form-group" style="margin-top: 20px;">
+            <label for="task-input"><i class="fas fa-check-square"></i> הוסף משימה יומית:</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="task-input" placeholder="לדוגמה: שלח הצעת מחיר">
+                <button class="btn" id="add-task"><i class="fas fa-plus"></i> הוסף</button>
+            </div>
+        </div>
+        <div class="list" id="task-list"></div>
+    </div>
+
+    <div class="tab-content" id="resources">
+        <h1><i class="fas fa-link"></i> משאבים ליזמים</h1>
+        <div class="resource-category">
+            <h3><i class="fas fa-tools"></i> כלי ניהול</h3>
+            <a href="https://trello.com/" class="resource-link" target="_blank"><i class="fab fa-trello"></i><span>Trello - ניהול פרויקטים</span></a>
+            <a href="https://www.notion.so/" class="resource-link" target="_blank"><i class="fas fa-book"></i><span>Notion - ארגון ועבודה</span></a>
+            <a href="https://asana.com/" class="resource-link" target="_blank"><i class="fas fa-tasks"></i><span>Asana - ניהול משימות</span></a>
+        </div>
+        <div class="resource-category">
+            <h3><i class="fas fa-users"></i> שכירת פרילנסרים</h3>
+            <a href="https://www.fiverr.com/" class="resource-link" target="_blank"><i class="fab fa-fiverr"></i><span>Fiverr - מצא פרילנסרים</span></a>
+            <a href="https://www.upwork.com/" class="resource-link" target="_blank"><i class="fab fa-upwork"></i><span>Upwork - פלטפורמה גלובלית</span></a>
+        </div>
+        <div class="resource-category">
+            <h3><i class="fas fa-network-wired"></i> רשתות מקצועיות</h3>
+            <a href="https://www.linkedin.com/" class="resource-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn - רשת מקצועית</span></a>
+            <a href="https://github.com/" class="resource-link" target="_blank"><i class="fab fa-github"></i><span>GitHub - קוד ופרויקטים</span></a>
+        </div>
+        <div class="resource-category">
+            <h3><i class="fas fa-rocket"></i> השקת מוצרים</h3>
+            <a href="https://www.producthunt.com/" class="resource-link" target="_blank"><i class="fas fa-rocket"></i><span>Product Hunt - הצגת מוצרים</span></a>
+            <a href="https://www.kickstarter.com/" class="resource-link" target="_blank"><i class="fas fa-lightbulb"></i><span>Kickstarter - גיוס המונים</span></a>
         </div>
     </div>
-</div>
 
-<div class="back-to-top" id="backToTop" data-section="home"><i class="fas fa-arrow-up"></i></div>
-
-<script>
-    const translations = {
-        en: {
-            welcome: "Welcome to YJURVEY Enterprise",
-            home: "Home",
-            services: "Services",
-            testimonials: "Testimonials",
-            contact: "Contact",
-            heroTitle: "Welcome to <span>YJURVEY</span> Enterprise",
-            announcement: "I am glad to announce the formation of the YJURVEY Enterprise!",
-            ctaButton: "Explore Our Services",
-            servicesTitle: "Our Services",
-            yourKitchen: "Your Kitchen",
-            yourKitchenDesc: "Discover tools and inspiration for your home kitchen (Hebrew).",
-            getawayGood: "Getaway Good",
-            getawayGoodDesc: "Personalized vacation add-ons from $20, delivered via WhatsApp.",
-            enhanceYourVacation: "Enhance Your Vacation",
-            enhanceYourVacationDesc: "Custom vacation packages for your next adventure.",
-            whatsappAssistant: "WhatsApp Status Assistant",
-            whatsappAssistantDesc: "Create standout WhatsApp statuses with ease.",
-            innovation: "Innovation",
-            innovationDesc: "Unleash creativity with innovative solutions.",
-            stockHub: "Stock Learning Hub",
-            stockHubDesc: "Master the stock market with our learning hub.",
-            smartEntrepreneurship: "Smart Entrepreneurship",
-            smartEntrepreneurshipDesc: "Resources and tools for modern entrepreneurs.",
-            learnMore: "Learn More",
-            testimonialsTitle: "What People Say",
-            testimonial1: '"YJURVEY transformed my vacation planning with Getaway Good!"',
-            testimonial1Name: "Sarah M.",
-            testimonial1Role: "Travel Enthusiast",
-            testimonial2: '"The WhatsApp Status Assistant is a game-changer for my social media."',
-            testimonial2Name: "John D.",
-            testimonial2Role: "Content Creator",
-            testimonial3: '"Innovation from YJURVEY sparked my next big idea."',
-            testimonial3Name: "Emily R.",
-            testimonial3Role: "Entrepreneur",
-            contactTitle: "Get in Touch",
-            contactUs: "Contact Us",
-            phone: "Phone",
-            email: "Email",
-            sendMessage: "Send a Message",
-            name: "Name",
-            emailField: "Email",
-            message: "Message",
-            submitButton: "Send Message",
-            footerDesc: "Innovative solutions for modern living. Join us in shaping the future.",
-            quickLinks: "Quick Links",
-            newsletter: "Newsletter",
-            newsletterDesc: "Stay updated with our latest innovations.",
-            newsletterPlaceholder: "Your Email",
-            copyright: "© 2025 YJURVEY Enterprise. All Rights Reserved.",
-            modalTitle: "Welcome to YJURVEY!",
-            modalText: "We’re thrilled to announce the formation of YJURVEY Enterprise. Explore our innovative services and join us on this journey!",
-            modalExplore: "Explore Now",
-            modalClose: "Close"
-        },
-        he: {
-            welcome: "ברוכים הבאים למפעל YJURVEY",
-            home: "בית",
-            services: "שירותים",
-            testimonials: "המלצות",
-            contact: "צור קשר",
-            heroTitle: "ברוכים הבאים ל-<span>YJURVEY</span> מפעל",
-            announcement: "שמח להכריז על הקמת מפעל YJURVEY!",
-            ctaButton: "גלה את השירותים שלנו",
-            servicesTitle: "השירותים שלנו",
-            yourKitchen: "המטבח שלך",
-            yourKitchenDesc: "גלה כלים והשראה למטבח הביתי שלך (עברית).",
-            getawayGood: "חופשה טובה",
-            getawayGoodDesc: "תוספות מותאמות אישית לחופשה החל מ-20 דולר, נשלחות דרך וואטסאפ.",
-            enhanceYourVacation: "שפר את החופשה שלך",
-            enhanceYourVacationDesc: "חבילות חופשה מותאמות להרפתקה הבאה שלך.",
-            whatsappAssistant: "עוזר סטטוס וואטסאפ",
-            whatsappAssistantDesc: "צור סטטוסים בולטים בוואטסאפ בקלות.",
-            innovation: "חדשנות",
-            innovationDesc: "שחרר יצירתיות עם פתרונות חדשניים.",
-            stockHub: "מרכז לימודי מניות",
-            stockHubDesc: "שלוט בשוק המניות עם מרכז הלימוד שלנו.",
-            smartEntrepreneurship: "יזמות חכמה",
-            smartEntrepreneurshipDesc: "משאבים וכלים ליזמים מודרניים.",
-            learnMore: "למידע נוסף",
-            testimonialsTitle: "מה אנשים אומרים",
-            testimonial1: '"YJURVEY שינה את תכנון החופשה שלי עם חופשה טובה!"',
-            testimonial1Name: "שרה מ.",
-            testimonial1Role: "חובבת טיולים",
-            testimonial2: '"עוזר הסטטוס של וואטסאפ הוא משנה משחק עבור המדיה החברתית שלי."',
-            testimonial2Name: "ג'ון ד.",
-            testimonial2Role: "יוצר תוכן",
-            testimonial3: '"חדשנות מ-YJURVEY הציתה את הרעיון הגדול הבא שלי."',
-            testimonial3Name: "אמילי ר.",
-            testimonial3Role: "יזמית",
-            contactTitle: "צור קשר",
-            contactUs: "צור איתנו קשר",
-            phone: "טלפון",
-            email: "אימייל",
-            sendMessage: "שלח הודעה",
-            name: "שם",
-            emailField: "אימייל",
-            message: "הודעה",
-            submitButton: "שלח הודעה",
-            footerDesc: "פתרונות חדשניים לחיים מודרניים. הצטרף אלינו לעיצוב העתיד.",
-            quickLinks: "קישורים מהירים",
-            newsletter: "ניוזלטר",
-            newsletterDesc: "הישאר מעודכן עם החידושים האחרונים שלנו.",
-            newsletterPlaceholder: "האימייל שלך",
-            copyright: "© 2025 מפעל YJURVEY. כל הזכויות שמורות.",
-            modalTitle: "ברוכים הבאים ל-YJURVEY!",
-            modalText: "אנו שמחים להכריז על הקמת מפעל YJURVEY. גלה את השירותים החדשניים שלנו והצטרף אלינו למסע הזה!",
-            modalExplore: "גלה עכשיו",
-            modalClose: "סגור"
-        }
-    };
-
-    function setLanguage(lang) {
-        document.body.classList.toggle('rtl', lang === 'he');
-        document.documentElement.lang = lang;
-        const elements = document.querySelectorAll('[data-en], [data-he]');
-        elements.forEach(el => {
-            const key = el.tagName === 'INPUT' ? el.getAttribute('data-' + lang + '-placeholder') : el.getAttribute('data-' + lang);
-            if (el.tagName === 'INPUT') {
-                el.placeholder = key;
-            } else {
-                el.innerHTML = key || el.innerHTML;
-            }
-        });
-        document.getElementById('languageSelection').classList.remove('show');
-        setTimeout(() => document.getElementById('languageSelection').style.display = 'none', 300);
-        localStorage.setItem('language', lang);
-        typeWriter(lang);
-    }
-
-    function showLanguageSelection() {
-        const langSelection = document.getElementById('languageSelection');
-        langSelection.style.display = 'flex';
-        setTimeout(() => langSelection.classList.add('show'), 10);
-    }
-
-    function typeWriter(lang) {
-        const text = translations[lang].announcement;
-        let index = 0;
-        const announcement = document.getElementById("announcement");
-        announcement.textContent = '';
-        function type() {
-            if (index < text.length) {
-                announcement.textContent += text.charAt(index);
-                index++;
-                setTimeout(type, 100);
-            }
-        }
-        type();
-    }
-
-    function showSection(sectionId) {
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-links a');
-        sections.forEach(section => section.classList.remove('active'));
-        navLinks.forEach(link => link.classList.remove('active'));
-        document.getElementById(sectionId).classList.add('active');
-        document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    document.querySelectorAll('[data-section]').forEach(element => {
-        if (!element.href) {
-            element.addEventListener('click', (e) => {
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const section = element.getAttribute('data-section');
-                showSection(section);
+                document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+                if (tabId === 'dashboard') renderDashboard();
+                if (tabId === 'projects') renderProjects();
+                if (tabId === 'budget') renderExpenses();
+                if (tabId === 'freelancers') resetFreelancerForm();
+                if (tabId === 'productivity') renderTasks();
+            });
+        });
+
+        // Data Storage
+        let expenses = JSON.parse(localStorage.getItem('website_expenses')) || [];
+        let projects = JSON.parse(localStorage.getItem('website_projects')) || [];
+        let tasks = JSON.parse(localStorage.getItem('website_tasks')) || [];
+        let dashboardSettings = JSON.parse(localStorage.getItem('dashboard_settings')) || {
+            budgetGoal: 10000,
+            milestoneGoal: 5,
+            taskGoal: 10
+        };
+        let reminderInterval = null;
+
+        // Alerts
+        const alertBox = document.getElementById('alert');
+        function showAlert(message) {
+            alertBox.textContent = message;
+            alertBox.style.display = 'block';
+            setTimeout(() => alertBox.style.display = 'none', 3000);
+        }
+
+        // Dashboard
+        const editDashboardBtn = document.getElementById('edit-dashboard-btn');
+        const dashboardSettingsForm = document.getElementById('dashboard-settings');
+        const dashboardForm = document.getElementById('dashboard-form');
+        const cancelEditBtn = document.getElementById('cancel-edit');
+
+        editDashboardBtn.addEventListener('click', function() {
+            dashboardSettingsForm.style.display = 'block';
+            document.getElementById('budget-goal').value = dashboardSettings.budgetGoal || '';
+            document.getElementById('milestone-goal').value = dashboardSettings.milestoneGoal || '';
+            document.getElementById('task-goal').value = dashboardSettings.taskGoal || '';
+        });
+
+        cancelEditBtn.addEventListener('click', function() {
+            dashboardSettingsForm.style.display = 'none';
+        });
+
+        dashboardForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const budgetGoal = parseFloat(document.getElementById('budget-goal').value) || 0;
+            const milestoneGoal = parseInt(document.getElementById('milestone-goal').value) || 0;
+            const taskGoal = parseInt(document.getElementById('task-goal').value) || 0;
+
+            dashboardSettings = { budgetGoal, milestoneGoal, taskGoal };
+            localStorage.setItem('dashboard_settings', JSON.stringify(dashboardSettings));
+            dashboardSettingsForm.style.display = 'none';
+            renderDashboard();
+            showAlert('הגדרות לוח הבקרה עודכנו בהצלחה!');
+        });
+
+        function renderDashboard() {
+            const grid = document.getElementById('dashboard-grid');
+            const totalExpenses = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+            const completedMilestones = projects.filter(p => p.completed).length;
+            const totalMilestones = projects.length;
+            const completedTasks = tasks.filter(t => t.completed).length;
+            const totalTasks = tasks.length;
+            
+            const budgetProgress = dashboardSettings.budgetGoal ? (totalExpenses / dashboardSettings.budgetGoal) * 100 : 0;
+            const milestoneProgress = dashboardSettings.milestoneGoal ? (completedMilestones / dashboardSettings.milestoneGoal) * 100 : 0;
+            const taskProgress = dashboardSettings.taskGoal ? (completedTasks / dashboardSettings.taskGoal) * 100 : 0;
+
+            grid.innerHTML = `
+                <div class="dashboard-card">
+                    <i class="fas fa-shekel-sign"></i>
+                    <h3>סה"כ הוצאות</h3>
+                    <p>₪${totalExpenses.toFixed(2)} / ₪${dashboardSettings.budgetGoal.toFixed(2)}</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: ${budgetProgress > 100 ? 100 : budgetProgress}%"></div></div>
+                </div>
+                <div class="dashboard-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>התקדמות פרויקטים</h3>
+                    <p>${completedMilestones}/${dashboardSettings.milestoneGoal}</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: ${milestoneProgress > 100 ? 100 : milestoneProgress}%"></div></div>
+                </div>
+                <div class="dashboard-card">
+                    <i class="fas fa-check-square"></i>
+                    <h3>משימות שהושלמו</h3>
+                    <p>${completedTasks}/${dashboardSettings.taskGoal}</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: ${taskProgress > 100 ? 100 : taskProgress}%"></div></div>
+                </div>
+            `;
+        }
+
+        // Project Planning
+        const projectForm = document.getElementById('project-form');
+        projectForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('project-name').value.trim();
+            const milestone = document.getElementById('milestone').value.trim();
+            const deadline = document.getElementById('deadline').value;
+            
+            if (!name || !milestone || !deadline) {
+                showAlert('אנא מלא את כל השדות');
+                return;
+            }
+            
+            const project = { id: Date.now(), name, milestone, deadline, completed: false };
+            projects.push(project);
+            localStorage.setItem('website_projects', JSON.stringify(projects));
+            renderProjects();
+            this.reset();
+            showAlert('אבן דרך נוספה בהצלחה!');
+        });
+        
+        function renderProjects() {
+            const projectList = document.getElementById('project-list');
+            projectList.innerHTML = projects.length === 0 ? `
+                <div class="empty-state">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>אין פרויקטים להצגה</h3>
+                    <p>הוסף פרויקט ראשון כדי להתחיל</p>
+                </div>
+            ` : '';
+            
+            projects.forEach(project => {
+                const item = document.createElement('div');
+                item.className = 'list-item';
+                const daysLeft = Math.ceil((new Date(project.deadline) - new Date()) / (1000 * 60 * 60 * 24));
+                item.innerHTML = `
+                    <div>
+                        <strong>${project.name} - ${project.milestone}</strong>
+                        <div style="color: #6c757d; font-size: 0.8rem; margin-top: 4px;">
+                            תאריך יעד: ${project.deadline} (${daysLeft > 0 ? daysLeft + ' ימים נותרו' : 'פג תוקף'})
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-small btn-success" onclick="toggleProjectStatus(${project.id})">
+                            <i class="fas fa-${project.completed ? 'undo' : 'check'}"></i> ${project.completed ? 'בטל' : 'סמן כהושלם'}
+                        </button>
+                        <button class="btn btn-small btn-stop" onclick="deleteProject(${project.id})">
+                            <i class="fas fa-trash"></i> מחק
+                        </button>
+                    </div>
+                `;
+                projectList.appendChild(item);
             });
         }
-    });
+        
+        window.toggleProjectStatus = function(id) {
+            projects = projects.map(p => p.id === id ? { ...p, completed: !p.completed } : p);
+            localStorage.setItem('website_projects', JSON.stringify(projects));
+            renderProjects();
+            renderDashboard();
+            showAlert('סטטוס הפרויקט עודכן!');
+        };
+        
+        window.deleteProject = function(id) {
+            projects = projects.filter(p => p.id !== id);
+            localStorage.setItem('website_projects', JSON.stringify(projects));
+            renderProjects();
+            renderDashboard();
+            showAlert('פרויקט נמחק בהצלחה!');
+        };
 
-    const navToggle = document.getElementById("navToggle");
-    const navLinks = document.getElementById("navLinks");
-    navToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
-
-    const languageToggle = document.getElementById("languageToggle");
-    languageToggle.addEventListener("click", showLanguageSelection);
-
-    const header = document.getElementById("header");
-    window.addEventListener("scroll", () => {
-        header.classList.toggle("header-scrolled", window.scrollY > 50);
-    });
-
-    const modal = document.getElementById("welcomeModal");
-    const modalClose = document.getElementById("modalClose");
-    const modalCloseSecondary = document.getElementById("modalCloseSecondary");
-
-    function showModal() {
-        modal.style.display = "flex";
-        setTimeout(() => modal.classList.add("show"), 10);
-    }
-
-    function closeModal() {
-        modal.classList.remove("show");
-        setTimeout(() => modal.style.display = "none", 500);
-    }
-
-    modalClose.addEventListener("click", closeModal);
-    modalCloseSecondary.addEventListener("click", closeModal);
-
-    const backToTop = document.getElementById("backToTop");
-    window.addEventListener("scroll", () => {
-        backToTop.classList.toggle("visible", window.scrollY > 300);
-    });
-
-    const testimonials = document.querySelectorAll(".testimonial");
-    const dots = document.querySelectorAll(".testimonial-dot");
-    let currentTestimonial = 0;
-
-    function showTestimonial(index) {
-        testimonials.forEach((t, i) => {
-            t.classList.remove("active");
-            dots[i].classList.remove("active");
+        // Budget Management
+        const expenseForm = document.getElementById('expense-form');
+        expenseForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('expense-name').value.trim();
+            const amount = parseFloat(document.getElementById('expense-amount').value);
+            const category = document.getElementById('expense-category').value;
+            
+            if (!name || isNaN(amount) || amount <= 0 || !category) {
+                showAlert('אנא מלא את כל השדות עם ערכים תקינים');
+                return;
+            }
+            
+            const expense = { id: Date.now(), name, amount, category, date: new Date().toLocaleDateString('he-IL') };
+            expenses.push(expense);
+            localStorage.setItem('website_expenses', JSON.stringify(expenses));
+            renderExpenses();
+            renderDashboard();
+            this.reset();
+            document.getElementById('expense-category').value = '';
+            showAlert('הוצאה נוספה בהצלחה!');
         });
-        testimonials[index].classList.add("active");
-        dots[index].classList.add("active");
-    }
+        
+        function renderExpenses() {
+            const expensesList = document.getElementById('expenses-list');
+            const totalExpenses = document.getElementById('total-expenses');
+            const budgetSummary = document.getElementById('budget-summary');
+            expensesList.innerHTML = expenses.length === 0 ? `
+                <div class="empty-state">
+                    <i class="fas fa-receipt"></i>
+                    <h3>אין הוצאות להצגה</h3>
+                    <p>הוסף הוצאה ראשונה כדי להתחיל</p>
+                </div>
+            ` : '';
+            
+            let total = 0;
+            const categoryTotals = {};
+            expenses.forEach(expense => {
+                const item = document.createElement('div');
+                item.className = 'list-item';
+                item.innerHTML = `
+                    <div>
+                        <strong>${expense.name}</strong>
+                        <div style="color: #6c757d; font-size: 0.8rem; margin-top: 4px;">
+                            ${expense.date} | <span class="badge ${getCategoryClass(expense.category)}">${getCategoryName(expense.category)}</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span>₪${expense.amount.toFixed(2)}</span>
+                        <div class="action-buttons">
+                            <button class="btn btn-small btn-outline" onclick="toggleEditForm(${expense.id})"><i class="fas fa-edit"></i> ערוך</button>
+                            <button class="btn btn-small btn-stop" onclick="deleteExpense(${expense.id})"><i class="fas fa-trash"></i> מחק</button>
+                        </div>
+                    </div>
+                    <div class="edit-form" id="edit-form-${expense.id}">
+                        <form onsubmit="updateExpense(event, ${expense.id}); return false;">
+                            <div class="form-group">
+                                <label>שם ההוצאה:</label>
+                                <input type="text" value="${expense.name}" id="edit-name-${expense.id}" required>
+                            </div>
+                            <div class="form-group">
+                                <label>סכום (₪):</label>
+                                <input type="number" value="${expense.amount}" id="edit-amount-${expense.id}" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label>קטגוריה:</label>
+                                <select id="edit-category-${expense.id}" required>
+                                    <option value="marketing" ${expense.category === 'marketing' ? 'selected' : ''}>שיווק</option>
+                                    <option value="development" ${expense.category === 'development' ? 'selected' : ''}>פיתוח</option>
+                                    <option value="design" ${expense.category === 'design' ? 'selected' : ''}>עיצוב</option>
+                                    <option value="office" ${expense.category === 'office' ? 'selected' : ''}>משרד</option>
+                                    <option value="other" ${expense.category === 'other' ? 'selected' : ''}>אחר</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-small"><i class="fas fa-save"></i> שמור</button>
+                            <button type="button" class="btn btn-small btn-outline" onclick="toggleEditForm(${expense.id})"><i class="fas fa-times"></i> בטל</button>
+                        </form>
+                    </div>
+                `;
+                expensesList.appendChild(item);
+                total += expense.amount;
+                categoryTotals[expense.category] = (categoryTotals[expense.category] || 0) + expense.amount;
+            });
+            
+            totalExpenses.innerHTML = `<span>סה"כ הוצאות:</span><span>₪${total.toFixed(2)}</span>`;
+            budgetSummary.innerHTML = `<h3 style="color: var(--primary);"><i class="fas fa-chart-pie"></i> סיכום לפי קטגוריה:</h3>` + 
+                Object.entries(categoryTotals).map(([cat, sum]) => `
+                    <p>${getCategoryName(cat)}: ₪${sum.toFixed(2)}</p>
+                `).join('');
+        }
+        
+        function getCategoryName(category) {
+            const categories = { 'marketing': 'שיווק', 'development': 'פיתוח', 'design': 'עיצוב', 'office': 'משרד', 'other': 'אחר' };
+            return categories[category] || 'אחר';
+        }
+        
+        function getCategoryClass(category) {
+            const classes = { 'marketing': 'badge-primary', 'development': 'badge-success', 'design': 'badge-danger', 'office': 'badge-primary', 'other': 'badge-success' };
+            return classes[category] || 'badge-success';
+        }
+        
+        window.toggleEditForm = function(id) {
+            const editForm = document.getElementById(`edit-form-${id}`);
+            editForm.style.display = editForm.style.display === 'block' ? 'none' : 'block';
+        };
+        
+        window.deleteExpense = function(id) {
+            expenses = expenses.filter(expense => expense.id !== id);
+            localStorage.setItem('website_expenses', JSON.stringify(expenses));
+            renderExpenses();
+            renderDashboard();
+            showAlert('הוצאה נמחקה בהצלחה!');
+        };
+        
+        window.updateExpense = function(event, id) {
+            event.preventDefault();
+            const name = document.getElementById(`edit-name-${id}`).value.trim();
+            const amount = parseFloat(document.getElementById(`edit-amount-${id}`).value);
+            const category = document.getElementById(`edit-category-${id}`).value;
+            
+            if (!name || isNaN(amount) || amount <= 0 || !category) {
+                showAlert('אנא מלא את כל השדות עם ערכים תקינים');
+                return;
+            }
+            
+            expenses = expenses.map(expense => 
+                expense.id === id ? { ...expense, name, amount, category, date: new Date().toLocaleDateString('he-IL') } : expense
+            );
+            localStorage.setItem('website_expenses', JSON.stringify(expenses));
+            renderExpenses();
+            renderDashboard();
+            showAlert('הוצאה עודכנה בהצלחה!');
+        };
 
-    dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => {
-            currentTestimonial = i;
-            showTestimonial(currentTestimonial);
+        // Sophisticated Freelancer Search
+        let selectedService = null;
+        let selectedKeywords = [];
+
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedService = this.getAttribute('data-service');
+            });
         });
-    });
 
-    setInterval(() => {
-        if (document.getElementById('testimonials').classList.contains('active')) {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            showTestimonial(currentTestimonial);
+        document.getElementById('analyze-needs').addEventListener('click', function(e) {
+            e.preventDefault();
+            const details = document.getElementById('project-details').value.trim().toLowerCase();
+            const budget = document.getElementById('project-budget').value.trim();
+            const timeline = document.getElementById('project-timeline').value;
+
+            if (!selectedService || !details) {
+                showAlert('אנא בחר שירות ותאר את הפרויקט שלך');
+                return;
+            }
+
+            // Analyze needs and suggest keywords
+            const keywordAnalysis = analyzeUserNeeds(selectedService, details);
+            selectedKeywords = keywordAnalysis.map(k => k.keyword);
+            renderKeywordSuggestions(keywordAnalysis);
+            document.getElementById('keyword-suggestions').style.display = 'block';
+            showAlert('ניתוח הצרכים הושלם! בחר מילות מפתח או המשך לחיפוש.');
+        });
+
+        document.getElementById('generate-links').addEventListener('click', function(e) {
+            e.preventDefault();
+            const details = document.getElementById('project-details').value.trim();
+            const budget = document.getElementById('project-budget').value.trim();
+            const timeline = document.getElementById('project-timeline').value;
+
+            const professionalDescription = generateProfessionalDescription(selectedService, details, budget, timeline);
+            const searchResults = document.getElementById('search-results');
+            const upworkLink = generateLink('upwork', selectedKeywords, budget, timeline);
+            const fiverrLink = generateLink('fiverr', selectedKeywords, budget, timeline);
+
+            searchResults.innerHTML = `
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-file-alt"></i> תיאור מקצועי:</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.6;">${professionalDescription}</p>
+                </div>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="${upworkLink}" target="_blank" class="btn btn-outline"><i class="fab fa-upwork"></i> חפש ב-Upwork</a>
+                    <a href="${fiverrLink}" target="_blank" class="btn btn-outline"><i class="fab fa-fiverr"></i> חפש ב-Fiverr</a>
+                </div>
+            `;
+            showAlert('קישורי חיפוש נוצרו בהצלחה!');
+        });
+
+        document.getElementById('reset-form').addEventListener('click', function(e) {
+            e.preventDefault();
+            resetFreelancerForm();
+            showAlert('הטופס אופס בהצלחה');
+        });
+
+        function analyzeUserNeeds(service, details) {
+            const serviceKeywords = {
+                'design': { 'logo': 10, 'graphic design': 8, 'branding': 7, 'ui': 6, 'illustration': 5 },
+                'development': { 'web development': 10, 'app': 8, 'wordpress': 7, 'software': 6, 'coding': 5 },
+                'marketing': { 'seo': 10, 'digital marketing': 8, 'social media': 7, 'ads': 6, 'content': 5 },
+                'writing': { 'copywriting': 10, 'content writing': 8, 'editing': 7, 'translation': 6, 'blog': 5 },
+                'other': { 'consulting': 8, 'freelancer': 6, 'expert': 5 }
+            };
+
+            const words = details.split(/\s+/);
+            const keywordScores = {};
+            const baseKeywords = serviceKeywords[service] || serviceKeywords['other'];
+
+            // Score keywords based on presence and relevance
+            Object.keys(baseKeywords).forEach(keyword => {
+                keywordScores[keyword] = baseKeywords[keyword];
+                if (details.includes(keyword)) {
+                    keywordScores[keyword] += 5; // Boost for explicit mention
+                }
+            });
+
+            words.forEach(word => {
+                if (word.length > 3) { // Ignore short words
+                    keywordScores[word] = (keywordScores[word] || 0) + 2;
+                }
+            });
+
+            // Convert to array and sort by score
+            const rankedKeywords = Object.entries(keywordScores)
+                .map(([keyword, score]) => ({ keyword, score }))
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 5); // Top 5 keywords
+
+            return rankedKeywords;
         }
-    }, 5000);
 
-    const contactForm = document.getElementById("contactForm");
-    contactForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert(document.documentElement.lang === 'he' ? "ההודעה נשלחה! (זו הדגמה בלבד)" : "Message sent! (This is a demo - no real submission occurs.)");
-        contactForm.reset();
-    });
+        function renderKeywordSuggestions(keywords) {
+            const suggestionContainer = document.getElementById('suggested-keywords');
+            suggestionContainer.innerHTML = keywords.map(k => `
+                <span data-keyword="${k.keyword}" class="${selectedKeywords.includes(k.keyword) ? '' : 'excluded'}">${k.keyword} (${k.score})</span>
+            `).join('');
 
-    window.addEventListener("load", () => {
-        const savedLang = localStorage.getItem('language');
-        if (savedLang) {
-            setLanguage(savedLang);
-            showSection('home');
-            setTimeout(showModal, 2000);
-        } else {
-            showLanguageSelection();
+            suggestionContainer.querySelectorAll('span').forEach(span => {
+                span.addEventListener('click', function() {
+                    const keyword = this.getAttribute('data-keyword');
+                    if (selectedKeywords.includes(keyword)) {
+                        selectedKeywords = selectedKeywords.filter(k => k !== keyword);
+                        this.classList.add('excluded');
+                    } else {
+                        selectedKeywords.push(keyword);
+                        this.classList.remove('excluded');
+                    }
+                });
+            });
         }
-    });
-</script>
 
+        function generateProfessionalDescription(service, details, budget, timeline) {
+            const serviceMap = {
+                'design': 'עיצוב גרפי',
+                'development': 'פיתוח אתרים/תוכנה',
+                'marketing': 'שיווק דיגיטלי',
+                'writing': 'כתיבה ועריכה',
+                'other': 'שירותים נוספים'
+            };
+            const timelineMap = {
+                'urgent': 'דחוף (עד שבוע)',
+                'short': 'קצר (1-2 שבועות)',
+                'medium': 'בינוני (3-4 שבועות)',
+                'long': 'ארוך (חודש ומעלה)'
+            };
+            return `מחפש פרילנסר ל${serviceMap[service]}. תיאור הפרויקט: ${details}. תקציב משוער: ₪${budget || 'לא צוין'}. זמן ביצוע: ${timelineMap[timeline]}.`;
+        }
+
+        function generateLink(platform, keywords, budget, timeline) {
+            const encodedKeywords = encodeURIComponent(keywords.join(' '));
+            const timelineFilter = timeline === 'urgent' ? 'fast' : '';
+
+            if (platform === 'upwork') {
+                let link = `https://www.upwork.com/search/jobs/?q=${encodedKeywords} ${timelineFilter}`.trim();
+                if (budget) link += `&amount_max=${budget}`;
+                return link;
+            } else if (platform === 'fiverr') {
+                let link = `https://www.fiverr.com/search/gigs?query=${encodedKeywords} ${timelineFilter}`.trim();
+                if (budget) link += `&max_price=${budget}`;
+                return link;
+            }
+            return '#';
+        }
+
+        function resetFreelancerForm() {
+            document.getElementById('project-details').value = '';
+            document.getElementById('project-budget').value = '';
+            document.getElementById('project-timeline').value = 'urgent';
+            document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('keyword-suggestions').style.display = 'none';
+            document.getElementById('search-results').innerHTML = '';
+            selectedService = null;
+            selectedKeywords = [];
+        }
+
+        // Productivity
+        const quotes = [
+            "הדרך להצלחה מתחילה בצעד הראשון.",
+            "כל יום הוא הזדמנות חדשה להגשים חלומות.",
+            "התמדה מנצחת הכל.",
+            "הצלחה היא תוצאה של הכנה וקבלת הזדמנויות.",
+            "אל תפחד לנסות, תפחד לא לנסות."
+        ];
+        
+        document.getElementById('new-quote').addEventListener('click', function(e) {
+            e.preventDefault();
+            const quoteElement = document.getElementById('motivation-quote');
+            let newQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            while (newQuote === quoteElement.textContent) {
+                newQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            }
+            quoteElement.textContent = newQuote;
+        });
+        
+        document.getElementById('start-reminders').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (reminderInterval) return;
+            const frequency = document.getElementById('reminder-frequency').value;
+            const intervals = { 'hourly': 3600000, 'daily': 86400000, 'weekly': 604800000 };
+            reminderInterval = setInterval(() => {
+                showAlert('תזכורת: בדוק את המשימות שלך!');
+            }, intervals[frequency]);
+            this.classList.remove('pulse');
+            showAlert('תזכורות הופעלו!');
+        });
+        
+        document.getElementById('stop-reminders').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (!reminderInterval) return;
+            clearInterval(reminderInterval);
+            reminderInterval = null;
+            document.getElementById('start-reminders').classList.add('pulse');
+            showAlert('תזכורות הופסקו!');
+        });
+        
+        document.getElementById('add-task').addEventListener('click', function(e) {
+            e.preventDefault();
+            const taskInput = document.getElementById('task-input');
+            const taskText = taskInput.value.trim();
+            if (!taskText) {
+                showAlert('אנא הכנס משימה');
+                return;
+            }
+            const task = { id: Date.now(), text: taskText, completed: false };
+            tasks.push(task);
+            localStorage.setItem('website_tasks', JSON.stringify(tasks));
+            renderTasks();
+            renderDashboard();
+            taskInput.value = '';
+            showAlert('משימה נוספה בהצלחה!');
+        });
+        
+        function renderTasks() {
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = tasks.length === 0 ? `
+                <div class="empty-state">
+                    <i class="fas fa-check-square"></i>
+                    <h3>אין משימות להצגה</h3>
+                    <p>הוסף משימה ראשונה כדי להתחיל</p>
+                </div>
+            ` : '';
+            
+            tasks.forEach(task => {
+                const item = document.createElement('div');
+                item.className = 'task-item';
+                item.innerHTML = `
+                    <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleTask(${task.id})">
+                    <span style="flex: 1; ${task.completed ? 'text-decoration: line-through; color: #6c757d;' : ''}">${task.text}</span>
+                    <button class="btn btn-small btn-stop" onclick="deleteTask(${task.id})"><i class="fas fa-trash"></i></button>
+                `;
+                taskList.appendChild(item);
+            });
+        }
+        
+        window.toggleTask = function(id) {
+            tasks = tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+            localStorage.setItem('website_tasks', JSON.stringify(tasks));
+            renderTasks();
+            renderDashboard();
+            showAlert('סטטוס המשימה עודכן!');
+        };
+        
+        window.deleteTask = function(id) {
+            tasks = tasks.filter(t => t.id !== id);
+            localStorage.setItem('website_tasks', JSON.stringify(tasks));
+            renderTasks();
+            renderDashboard();
+            showAlert('משימה נמחקה בהצלחה!');
+        };
+
+        // Initial Render
+        renderDashboard();
+    </script>
 </body>
 </html>
-
-
